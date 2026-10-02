@@ -5,6 +5,10 @@ methods PASS on Python 3.14.6. The additional independent byte controls cover an
 empty allocated chunk with nonzero declarations, zero declarations and zero-filled
 allocated space in both strict/lenient modes. Each retains matching CRCs and
 original declarations, emits no invented record, and has OPEN incomplete coverage.
+The native validation adapter reads its expected version from the bounded trusted
+`pyproject.toml`, then requires that exact version and matching source, built and
+installed bytes. Its controls reject a different installed version, malformed or
+oversized source configuration, changed modules and changed raw metadata.
 The exact 0.1.1 package/installed observations are recorded separately in
 `evidence/reaudit-0.1.1.json`; new hosted/native CI must be observed for this version.
 

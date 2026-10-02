@@ -14,6 +14,7 @@ import subprocess
 import sys
 import tempfile
 import threading
+import tomllib
 import urllib.request
 import zipfile
 from unittest.mock import patch
@@ -30,6 +31,28 @@ CORPUS = (
 )
 FIELD_NAMES = {path.rsplit("/", 1)[1]: maximum for path, maximum in NUMERIC_FIELDS.items()}
 SYSTEM_TIME_PATH = "Event/System/TimeCreated/@SystemTime"
+
+
+def project_version(project):
+    """Read the expected package version from the trusted source configuration."""
+    try:
+        path = Path(project) / "pyproject.toml"
+        if path.stat().st_size > 65536:
+            raise ValueError("trusted_project_version_contract")
+        with path.open("rb") as stream:
+            raw = stream.read(65537)
+        if len(raw) > 65536:
+            raise ValueError("trusted_project_version_contract")
+        declared = tomllib.loads(raw.decode("utf-8"))["project"]
+        version = declared["version"]
+        if (declared["name"] != "evtx-record-review" or type(version) is not str
+                or not 1 <= len(version) <= 64 or version[0] not in "0123456789"
+                or any(char not in "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.+-_"
+                       for char in version)):
+            raise ValueError("trusted_project_version_contract")
+        return version
+    except (OSError, UnicodeError, tomllib.TOMLDecodeError, KeyError, TypeError):
+        raise ValueError("trusted_project_version_contract") from None
 
 
 def installed_metadata_bytes(distribution):
@@ -52,6 +75,7 @@ def installed_metadata_bytes(distribution):
 
 def installed_identity(project=None):
     project = Path(project) if project is not None else Path(__file__).resolve().parents[1]
+    expected_version = project_version(project)
     manifest_raw = (project / "evidence/source-review.json").read_bytes()
     manifest = json.loads(manifest_raw)
     modules = [row for row in manifest["files"]
@@ -59,7 +83,7 @@ def installed_identity(project=None):
     if len(modules) != 10 or len({row["path"] for row in modules}) != 10:
         raise ValueError("runtime_manifest_contract")
     distribution = importlib.metadata.distribution("evtx-record-review")
-    if distribution.version != "0.1.0":
+    if distribution.version != expected_version:
         raise ValueError("installed_version_identity")
     hashes = {}
     for row in modules:
@@ -74,11 +98,11 @@ def installed_identity(project=None):
                 or hashlib.sha256(installed).hexdigest() != row["sha256"]):
             raise ValueError("installed_runtime_source_identity")
         hashes[relative] = row["sha256"]
-    wheel = project / "dist/evtx_record_review-0.1.0-py3-none-any.whl"
+    wheel = project / ("dist/evtx_record_review-" + expected_version + "-py3-none-any.whl")
     if wheel.stat().st_size > 1024 * 1024:
         raise ValueError("built_wheel_budget")
     with zipfile.ZipFile(wheel) as archive:
-        metadata_path = "evtx_record_review-0.1.0.dist-info/METADATA"
+        metadata_path = "evtx_record_review-" + expected_version + ".dist-info/METADATA"
         if archive.getinfo(metadata_path).file_size > 65536:
             raise ValueError("built_metadata_budget")
         metadata = archive.read(metadata_path)
@@ -339,6 +363,7 @@ if __name__ == "__main__":
                       "new_native_System_identity_uninterpreted",
                       "comparison_duplicate_record_identifier", "native_fact_or_identity_mismatch",
                       "corpus_count_or_input_changed", "runtime_manifest_contract", "installed_version_identity",
+                      "trusted_project_version_contract",
                       "source_installed_runtime_budget", "built_wheel_budget",
                       "installed_runtime_source_identity", "built_metadata_budget", "built_runtime_budget",
                       "built_runtime_source_identity", "installed_wheel_metadata_identity",

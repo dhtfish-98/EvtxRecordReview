@@ -150,8 +150,12 @@ class NativeAdapterTests(unittest.TestCase):
                 adapter.download("system.evtx", len(data), "0" * 64)
 
     def test_installed_identity_requires_all_source_wheel_and_installed_modules(self):
+        current_version = adapter.project_version(Path(__file__).resolve().parents[1])
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
+            source_config = root / "pyproject.toml"
+            source_config.write_text('[project]\nname = "evtx-record-review"\nversion = "'
+                                     + current_version + '"\n', encoding="utf-8")
             (root / "evidence").mkdir()
             (root / "dist").mkdir()
             rows = []
@@ -171,21 +175,36 @@ class NativeAdapterTests(unittest.TestCase):
             metadata_file = root / "installed" / metadata_relative
             metadata_file.parent.mkdir()
             metadata_file.write_bytes(b"FIXED_METADATA\r\n")
-            wheel = root / "dist/evtx_record_review-0.1.0-py3-none-any.whl"
+            wheel = root / ("dist/evtx_record_review-" + current_version + "-py3-none-any.whl")
             with zipfile.ZipFile(wheel, "w") as archive:
                 for row in rows:
                     archive.write(root / row["path"], row["path"][4:])
-                archive.writestr("evtx_record_review-0.1.0.dist-info/METADATA", b"FIXED_METADATA\r\n")
+                archive.writestr("evtx_record_review-" + current_version + ".dist-info/METADATA",
+                                 b"FIXED_METADATA\r\n")
             class Distribution:
-                version = "0.1.0"
+                version = current_version
                 files = (metadata_relative,)
                 def locate_file(self, name):
                     return root / "installed" / name
                 def read_text(self, name):
                     return "FIXED_METADATA\n"
-            with patch.object(adapter.importlib.metadata, "distribution", return_value=Distribution()):
+            distribution = Distribution()
+            with patch.object(adapter.importlib.metadata, "distribution", return_value=distribution):
+                distribution.version = current_version + ".post1"
+                with self.assertRaisesRegex(ValueError, "installed_version_identity"):
+                    adapter.installed_identity(root)
+                distribution.version = current_version
+                trusted_config = source_config.read_bytes()
+                for invalid_config in (b"[project\n", b'[project]\nname="other"\nversion="0.1.1"\n',
+                                       b'[project]\nname="evtx-record-review"\nversion="../PRIVATE"\n',
+                                       b"X" * 65537):
+                    source_config.write_bytes(invalid_config)
+                    with self.assertRaisesRegex(ValueError, "trusted_project_version_contract"):
+                        adapter.installed_identity(root)
+                source_config.write_bytes(trusted_config)
                 result = adapter.installed_identity(root)
                 self.assertEqual(result["modules_compared"], 10)
+                self.assertEqual(result["installed_version"], current_version)
                 self.assertEqual(result["source_wheel_installed"], "IDENTICAL")
                 self.assertEqual(result["built_wheel_sha256"], hashlib.sha256(wheel.read_bytes()).hexdigest())
                 metadata_file.write_bytes(b"PRIVATE_CHANGED_METADATA\r\n")

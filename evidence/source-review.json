@@ -66,14 +66,14 @@
       "path": "README.md",
       "bytes": 5474,
       "lines": 81,
-      "sha256": "6c684d776c322c9f0990cedb4e21b4b20eaa6bd30615937fa50022ae8049ae0f",
+      "sha256": "dfbccd411af459723f36f3e888bccd55ac2bcab13e852bf8ee3dff35ca324f0e",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 9715,
-      "lines": 136,
-      "sha256": "95003e5b16046cf098ee7d58f137bd5037d6c5954a97d8aa9332dec7552790ae",
+      "bytes": 10034,
+      "lines": 140,
+      "sha256": "9f7b547b38932c71d38f7b990a30756cd18c2b978b1e9e80b81915e0eb3215f6",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -211,16 +211,16 @@
     },
     {
       "path": "tests/test_windows_compare.py",
-      "bytes": 14333,
-      "lines": 245,
-      "sha256": "75d9651a15fa3ccd88aa268cdf381dc597e3c2ad68ec223686f6a3839d03e687",
+      "bytes": 15697,
+      "lines": 264,
+      "sha256": "b8bd7657e3f1b144d9b0dcddca4d4c11b93ae2f9f2416e439514819fcba1cffc",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "tools/windows_compare.py",
-      "bytes": 17281,
-      "lines": 348,
-      "sha256": "9a48d2e9be06c43723ab47179c93b0ff143abe811d8d416cc47a634a11375de1",
+      "bytes": 18555,
+      "lines": 373,
+      "sha256": "bb332c0080aec8943610a0716841ef3719e9ab69f03462e07465fcc592c4aee8",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -232,9 +232,9 @@
     },
     {
       "path": "evidence/reaudit-0.1.1.json",
-      "bytes": 981,
-      "lines": 21,
-      "sha256": "fa60b67cf223bf44eb7b0b1fb108ca2cac4dfbbf24a8712292fdfc5f6e50ae06",
+      "bytes": 1471,
+      "lines": 22,
+      "sha256": "94385872b0eceddcb9fe4d82e2136367e104430c4e26488b30313a71237c19bd",
       "read_scope": "ENTIRE_FILE"
     }
   ],
@@ -248,5 +248,5 @@
   ],
   "version": "0.1.1",
   "reaudit_date": "2026-10-03",
-  "reaudit_review_basis": "Prior complete selected-source review retained for unchanged files; final runtime and changed source/test/CLI/docs/metadata inspected in this re-audit. Current package/installed/CI states belong to separately bound external records."
+  "reaudit_review_basis": "Prior complete selected-source review retained for unchanged files; final runtime and changed source/test/CLI/docs/metadata inspected in this re-audit. Current package/installed/CI states belong to separately bound external records. Final adapter version gate and all changed controls reviewed; expected version is tied to trusted source pyproject rather than installed metadata alone."
 }

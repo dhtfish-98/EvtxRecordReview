@@ -17,5 +17,6 @@
     "complete_platform_equivalence": "OPEN"
   },
   "implementation_review": "Final runtime read in full; complete changed regression cases/docs/metadata reviewed; unchanged prior scope review retained with exact byte identities.",
-  "history": "Version0.1.0 remains a separate historical release; no old asset or external evidence is overwritten."
+  "history": "Version0.1.0 remains a separate historical release. The first0.1.1 candidate at ab48275 had a stale validation-adapter version; its artifacts are retained separately and are superseded by the final0.1.1 candidate. No historical external evidence is overwritten.",
+  "validation_adapter": "Expected version is read from bounded trusted pyproject.toml. Exact installed version, ten source/wheel/installed runtime hashes and raw wheel/installed METADATA remain required. Controls reject wrong installed version, malformed/oversized/foreign/unsafe-version trusted configuration and byte changes."
 }
