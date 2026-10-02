@@ -7,6 +7,8 @@ import tempfile
 import unittest
 import zipfile
 from unittest.mock import patch
+from contextlib import redirect_stderr
+import io
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 import windows_compare as adapter
@@ -95,13 +97,18 @@ class NativeAdapterTests(unittest.TestCase):
                 rows.append({"path": "src/" + relative, "sha256": hashlib.sha256(raw).hexdigest()})
             manifest = root / "evidence/source-review.json"
             manifest.write_text(json.dumps({"files": rows}))
+            metadata_relative = Path("actual-fixture-distribution.dist-info/METADATA")
+            metadata_file = root / "installed" / metadata_relative
+            metadata_file.parent.mkdir()
+            metadata_file.write_bytes(b"FIXED_METADATA\r\n")
             wheel = root / "dist/evtx_record_review-0.1.0-py3-none-any.whl"
             with zipfile.ZipFile(wheel, "w") as archive:
                 for row in rows:
                     archive.write(root / row["path"], row["path"][4:])
-                archive.writestr("evtx_record_review-0.1.0.dist-info/METADATA", b"FIXED_METADATA\n")
+                archive.writestr("evtx_record_review-0.1.0.dist-info/METADATA", b"FIXED_METADATA\r\n")
             class Distribution:
                 version = "0.1.0"
+                files = (metadata_relative,)
                 def locate_file(self, name):
                     return root / "installed" / name
                 def read_text(self, name):
@@ -111,6 +118,19 @@ class NativeAdapterTests(unittest.TestCase):
                 self.assertEqual(result["modules_compared"], 10)
                 self.assertEqual(result["source_wheel_installed"], "IDENTICAL")
                 self.assertEqual(result["built_wheel_sha256"], hashlib.sha256(wheel.read_bytes()).hexdigest())
+                metadata_file.write_bytes(b"PRIVATE_CHANGED_METADATA\r\n")
+                stderr = io.StringIO()
+                with redirect_stderr(stderr):
+                    with self.assertRaisesRegex(ValueError, "installed_wheel_metadata_identity"):
+                        adapter.installed_identity(root)
+                diagnostic = json.loads(stderr.getvalue())["metadata_identity"]
+                self.assertEqual(diagnostic["installed_bytes"], len(metadata_file.read_bytes()))
+                self.assertNotIn("PRIVATE", stderr.getvalue())
+                metadata_file.write_bytes(b"FIXED_METADATA\n")
+                with redirect_stderr(io.StringIO()):
+                    with self.assertRaisesRegex(ValueError, "installed_wheel_metadata_identity"):
+                        adapter.installed_identity(root)
+                metadata_file.write_bytes(b"FIXED_METADATA\r\n")
                 original_source = source.read_bytes()
                 source.write_bytes(original_source.replace(b"\n", b"\r\n"))
                 with self.assertRaisesRegex(ValueError, "installed_runtime_source_identity"):
@@ -128,6 +148,27 @@ class NativeAdapterTests(unittest.TestCase):
                         archive.writestr(name, raw)
                 with self.assertRaisesRegex(ValueError, "built_runtime_source_identity"):
                     adapter.installed_identity(root)
+
+    def test_installed_metadata_location_and_byte_budget_are_required(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            relative = Path("actual-fixture-distribution.dist-info/METADATA")
+            target = root / relative
+            target.parent.mkdir()
+            target.write_bytes(b"X" * 65536)
+            class Distribution:
+                files = (relative,)
+                def locate_file(self, name):
+                    return root / name
+            distribution = Distribution()
+            self.assertEqual(len(adapter.installed_metadata_bytes(distribution)), 65536)
+            target.write_bytes(b"X" * 65537)
+            with self.assertRaisesRegex(ValueError, "installed_metadata_budget"):
+                adapter.installed_metadata_bytes(distribution)
+            for entries in (None, (), (relative, relative), tuple([relative] * 129)):
+                distribution.files = entries
+                with self.assertRaisesRegex(ValueError, "installed_metadata_location_contract"):
+                    adapter.installed_metadata_bytes(distribution)
 
 
 if __name__ == "__main__":

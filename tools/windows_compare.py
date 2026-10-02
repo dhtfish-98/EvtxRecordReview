@@ -30,6 +30,24 @@ CORPUS = (
 FIELD_NAMES = {path.rsplit("/", 1)[1]: maximum for path, maximum in NUMERIC_FIELDS.items()}
 
 
+def installed_metadata_bytes(distribution):
+    files = distribution.files
+    if files is None or len(files) > 128:
+        raise ValueError("installed_metadata_location_contract")
+    candidates = [path for path in files if len(path.parts) >= 2
+                  and path.name == "METADATA" and path.parts[-2].endswith(".dist-info")]
+    if len(candidates) != 1:
+        raise ValueError("installed_metadata_location_contract")
+    path = Path(distribution.locate_file(candidates[0]))
+    if path.stat().st_size > 65536:
+        raise ValueError("installed_metadata_budget")
+    with path.open("rb") as stream:
+        raw = stream.read(65537)
+    if len(raw) > 65536:
+        raise ValueError("installed_metadata_budget")
+    return raw
+
+
 def installed_identity(project=None):
     project = Path(project) if project is not None else Path(__file__).resolve().parents[1]
     manifest_raw = (project / "evidence/source-review.json").read_bytes()
@@ -62,7 +80,13 @@ def installed_identity(project=None):
         if archive.getinfo(metadata_path).file_size > 65536:
             raise ValueError("built_metadata_budget")
         metadata = archive.read(metadata_path)
-        if distribution.read_text("METADATA").encode() != metadata:
+        installed_metadata = installed_metadata_bytes(distribution)
+        if installed_metadata != metadata:
+            diagnostic = {"metadata_identity": {
+                "wheel_bytes": len(metadata), "wheel_sha256": hashlib.sha256(metadata).hexdigest(),
+                "installed_bytes": len(installed_metadata),
+                "installed_sha256": hashlib.sha256(installed_metadata).hexdigest()}}
+            print(json.dumps(diagnostic, sort_keys=True), file=sys.stderr)
             raise ValueError("installed_wheel_metadata_identity")
         for relative, expected in hashes.items():
             if archive.getinfo(relative).file_size > 65536:
@@ -73,6 +97,8 @@ def installed_identity(project=None):
             "installed_version": distribution.version,
             "source_review_sha256": hashlib.sha256(manifest_raw).hexdigest(),
             "runtime_module_hashes_sha256": hashlib.sha256(encoded(hashes)).hexdigest(),
+            "installed_wheel_metadata_sha256": hashlib.sha256(metadata).hexdigest(),
+            "installed_wheel_metadata_bytes": len(metadata),
             "built_wheel_sha256": hashlib.sha256(wheel.read_bytes()).hexdigest()}
 
 
@@ -231,7 +257,8 @@ if __name__ == "__main__":
                       "corpus_count_or_input_changed", "runtime_manifest_contract", "installed_version_identity",
                       "source_installed_runtime_budget", "built_wheel_budget",
                       "installed_runtime_source_identity", "built_metadata_budget", "built_runtime_budget",
-                      "built_runtime_source_identity", "installed_wheel_metadata_identity"}
+                      "built_runtime_source_identity", "installed_wheel_metadata_identity",
+                      "installed_metadata_location_contract", "installed_metadata_budget"}
         code = str(error) if type(error) is ValueError and str(error) in safe_codes else "validation_adapter_error"
         print("Windows_native_comparison_failed:" + code, file=sys.stderr)
         raise SystemExit(1)

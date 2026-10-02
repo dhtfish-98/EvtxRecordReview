@@ -1,6 +1,6 @@
 # Measured validation and limits
 
-Local source tests: 81 methods PASS on Python 3.14.6. Tests use a separately
+Local source tests: 82 methods PASS on Python 3.14.6. Tests use a separately
 written EVTX writer, not runtime parsing functions, and encode actual chunk/name/
 template/value/record bytes. Coverage includes resident and referenced templates,
 multiple chunks, exact 100 ns times, all declared scalars, vector arrays, nested
@@ -73,6 +73,15 @@ identical to their source-review entries. That rule is included in the source
 distribution. The artifact-gate regression also rejects a CRLF-only source
 mutation. Raw SHA checks remain unchanged; local checkout protection does not
 establish the pending native Windows comparison result.
+The next Windows run, 37021613685 at commit
+`27564af6b9d1adddcdb177201f383d2520bd7614`, passed the runtime source/installed
+hash checks but stopped at `installed_wheel_metadata_identity`. That adapter
+previously re-encoded text metadata, which normalizes CRLF; it now reads bounded
+raw bytes from the installed distribution's own recorded METADATA location.
+Matching CRLF metadata passes, and changed bytes or CRLF-to-LF-only mutation
+fail. The ninth adapter test checks unique metadata location and the 65,536-byte
+limit. A mismatch emits only byte counts and SHA-256 values, never metadata text.
+This correction still requires an observed new native Windows run.
 Passing this targeted numeric comparison would not establish complete Windows
 exporter equivalence for the project's unsupported types, dialects or renderings.
 
