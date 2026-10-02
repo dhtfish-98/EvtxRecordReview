@@ -1,6 +1,6 @@
 # Measured validation and limits
 
-Local source tests: 82 methods PASS on Python 3.14.6. Tests use a separately
+Local source tests: 84 methods PASS on Python 3.14.6. Tests use a separately
 written EVTX writer, not runtime parsing functions, and encode actual chunk/name/
 template/value/record bytes. Coverage includes resident and referenced templates,
 multiple chunks, exact 100 ns times, all declared scalars, vector arrays, nested
@@ -48,7 +48,8 @@ downloads only the two fixed upstream corpus files, checks their SHA-256 and
 length, and uses Windows EventLogReader with PathType.FilePath and ToXml. A bounded
 XML reader prohibits DTDs and entity resolvers. Native RecordId, FILETIME and all
 six supported numeric System facts are compared exactly, independent of order.
-Only counts and canonical fact/input hashes reach CI output; raw XML and logs are
+Passing comparisons emit counts and canonical fact/input hashes; failed ones add
+the bounded numeric-only diagnostic below. Raw XML and logs are
 temporary and are not published. There is no live channel query or message-resource
 rendering. The product's report limit remains enabled during a validation-only
 internal observer. POSIX-only secure CLI path reading is deliberately unsupported
@@ -82,6 +83,16 @@ Matching CRLF metadata passes, and changed bytes or CRLF-to-LF-only mutation
 fail. The ninth adapter test checks unique metadata location and the 65,536-byte
 limit. A mismatch emits only byte counts and SHA-256 values, never metadata text.
 This correction still requires an observed new native Windows run.
+The third run, 37022684296 at commit
+`ea3b80227ce77b23e3f83fb7cf48a7bcfe3288d6`, passed artifact identity and reached
+native export but failed exact fact/identity comparison. No parser behavior is
+changed without observed differences. Validation diagnostics now report record/
+fact totals, identifier-set differences, per-field presence/value mismatch counts,
+FILETIME mismatch counts and up to eight numeric delta bins, plus both canonical
+hashes. At most the first shared mismatch's whitelisted numeric values and hashed
+record identity are shown. Unknown field names, private values, XML and messages
+are never emitted. Two additional tests verify these aggregates, strong failure
+and private-value suppression. The required comparison remains pending.
 Passing this targeted numeric comparison would not establish complete Windows
 exporter equivalence for the project's unsupported types, dialects or renderings.
 

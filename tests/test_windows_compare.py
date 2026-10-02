@@ -54,8 +54,40 @@ class NativeAdapterTests(unittest.TestCase):
                     [{**rows[0], "fields": {"Level": 5}}],
                     [{**rows[0], "fields": {}}]]
         for other in controls:
-            with self.assertRaises(ValueError):
-                adapter.compare(rows, other)
+            with redirect_stderr(io.StringIO()):
+                with self.assertRaises(ValueError):
+                    adapter.compare(rows, other)
+
+    def test_safe_mismatch_statistics_distinguish_sets_times_presence_and_values(self):
+        native = {1: {"record_identifier": 1, "filetime_ticks": 2, "fields": {"Level": 4, "Task": 1}},
+                  2: {"record_identifier": 2, "filetime_ticks": 2, "fields": {}}}
+        parsed = {1: {"record_identifier": 1, "filetime_ticks": 3, "fields": {"Level": 5}},
+                  3: {"record_identifier": 3, "filetime_ticks": 3, "fields": {}}}
+        result = adapter.comparison_diagnostics(native, parsed)["native_comparison_diagnostic"]
+        self.assertEqual((result["native_records"], result["parsed_records"], result["shared_identifiers"]), (2, 2, 1))
+        self.assertEqual((result["native_only_identifiers"], result["parsed_only_identifiers"]), (1, 1))
+        self.assertEqual((result["FILETIME_mismatches"], result["shared_record_mismatches"]), (1, 1))
+        self.assertEqual(result["FILETIME_native_minus_parsed_ticks"], {"-1": 1})
+        self.assertEqual(result["field_presence_mismatches"]["Task"], 1)
+        self.assertEqual(result["field_numeric_value_mismatches"]["Level"], 1)
+        self.assertNotEqual(result["native_canonical_sha256"], result["parsed_canonical_sha256"])
+        first = result["first_shared_difference"]
+        self.assertEqual(len(first["record_identifier_sha256"]), 64)
+        self.assertEqual((first["native_FILETIME"], first["parsed_FILETIME"]), (2, 3))
+        with redirect_stderr(io.StringIO()) as stderr:
+            with self.assertRaisesRegex(ValueError, "native_fact_or_identity_mismatch"):
+                adapter.compare(list(native.values()), list(parsed.values()))
+        self.assertEqual(json.loads(stderr.getvalue())["native_comparison_diagnostic"], result)
+
+    def test_diagnostics_never_emit_unknown_field_or_non_numeric_values(self):
+        native = {1: {"record_identifier": 1, "filetime_ticks": "PRIVATE_TIME",
+                      "fields": {"Level": "PRIVATE_LEVEL", "PRIVATE_KEY": "PRIVATE_DATA"}}}
+        parsed = {1: {"record_identifier": 1, "filetime_ticks": 3, "fields": {"Level": 5}}}
+        result = adapter.comparison_diagnostics(native, parsed)
+        raw = json.dumps(result)
+        self.assertNotIn("PRIVATE", raw)
+        self.assertIsNone(result["native_comparison_diagnostic"]["first_shared_difference"]["native_FILETIME"])
+        self.assertIsNone(result["native_comparison_diagnostic"]["first_shared_difference"]["known_numeric_fields"]["Level"]["native"])
 
     def test_real_fixture_capture_keeps_product_report_caps(self):
         rows, report = adapter.parsed_records(ordinary())

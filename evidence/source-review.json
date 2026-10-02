@@ -3,7 +3,7 @@
   "review_status": "COMPLETE_SELECTED_NEW_SOURCE_REVIEW",
   "runtime_files": 10,
   "runtime_lines": 1158,
-  "test_methods": 82,
+  "test_methods": 84,
   "new_files_reviewed": 32,
   "files": [
     {
@@ -71,9 +71,9 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 6622,
-      "lines": 94,
-      "sha256": "be4dea81aad7c48525bec7ba0904f1aed6bd9265f75fb5aa4d3a6c4b0e38a446",
+      "bytes": 7441,
+      "lines": 105,
+      "sha256": "9d4f46d8ce526b54516a37bd253504c807f3a5e029f3f29ee904f837c1f4ea18",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -211,16 +211,16 @@
     },
     {
       "path": "tests/test_windows_compare.py",
-      "bytes": 9424,
-      "lines": 175,
-      "sha256": "e9e6ea460d0389fad527f79127c739e1ada800ac0478e0df9b2f0caebcf3bb8a",
+      "bytes": 11938,
+      "lines": 207,
+      "sha256": "3c01b64719e9a2c42ba1e6ae61e169b82e5a0bc9e639bb51f2e45202eca43c11",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "tools/windows_compare.py",
-      "bytes": 12095,
-      "lines": 264,
-      "sha256": "212e6bd19e53081fd243a09354756e0b512b57797d49ceb1455831879274826e",
+      "bytes": 15604,
+      "lines": 324,
+      "sha256": "6b5752a129fe418a8693ee4bf9f64c5ceac65fae0a6e90b8eda16d1c5d1ccbea",
       "read_scope": "ENTIRE_FILE"
     },
     {

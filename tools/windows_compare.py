@@ -1,7 +1,8 @@
 """CI-only native Windows export oracle for two fixed historical offline files.
 
-Downloads are bounded research inputs, never a product runtime feature. No raw
-XML/event text or per-record facts are printed or saved as CI artifacts.
+Downloads are bounded research inputs, never a product runtime feature. Raw XML,
+event messages and user strings are never printed or saved as CI artifacts.
+Failed comparisons may report the first mismatch's whitelisted numeric facts.
 """
 
 import hashlib
@@ -210,11 +211,70 @@ def compare(native, parsed):
 
     left, right = index(native), index(parsed)
     if left != right:
+        print(json.dumps(comparison_diagnostics(left, right), sort_keys=True), file=sys.stderr)
         raise ValueError("native_fact_or_identity_mismatch")
     canonical = [right[key] for key in sorted(right)]
     return {"records": len(canonical), "numeric_facts": sum(len(row["fields"]) for row in canonical),
             "canonical_numeric_identity_sha256": hashlib.sha256(encoded(canonical)).hexdigest(),
             "native_record_ids_and_FILETIME_equal": True, "mismatches": 0}
+
+
+def comparison_diagnostics(native, parsed):
+    shared = set(native) & set(parsed)
+    presence = {name: 0 for name in FIELD_NAMES}
+    values = {name: 0 for name in FIELD_NAMES}
+    times = different_rows = 0
+    time_deltas, omitted_time_deltas = {}, 0
+    first = None
+
+    def finite(value, maximum):
+        return value if type(value) is int and 0 <= value <= maximum else None
+
+    for identifier in sorted(shared):
+        left, right = native[identifier], parsed[identifier]
+        time_difference = left["filetime_ticks"] != right["filetime_ticks"]
+        times += time_difference
+        left_time = finite(left["filetime_ticks"], 2**64 - 1)
+        right_time = finite(right["filetime_ticks"], 2**64 - 1)
+        if time_difference and left_time is not None and right_time is not None:
+            delta = str(left_time - right_time)
+            if delta in time_deltas or len(time_deltas) < 8:
+                time_deltas[delta] = time_deltas.get(delta, 0) + 1
+            else:
+                omitted_time_deltas += 1
+        row_fields = {}
+        for name, maximum in FIELD_NAMES.items():
+            left_present, right_present = name in left["fields"], name in right["fields"]
+            if left_present != right_present:
+                presence[name] += 1
+                row_fields[name] = {"difference": "presence", "native_present": left_present,
+                                    "parsed_present": right_present}
+            elif left_present and left["fields"][name] != right["fields"][name]:
+                values[name] += 1
+                row_fields[name] = {"difference": "numeric_value",
+                                    "native": finite(left["fields"][name], maximum),
+                                    "parsed": finite(right["fields"][name], maximum)}
+        if left != right:
+            different_rows += 1
+            if first is None:
+                first = {"record_identifier_sha256": hashlib.sha256(encoded(identifier)).hexdigest(),
+                         "FILETIME_difference": time_difference, "known_numeric_fields": row_fields}
+                if time_difference:
+                    first["native_FILETIME"] = finite(left["filetime_ticks"], 2**64 - 1)
+                    first["parsed_FILETIME"] = finite(right["filetime_ticks"], 2**64 - 1)
+    return {"native_comparison_diagnostic": {
+        "native_records": len(native), "parsed_records": len(parsed), "shared_identifiers": len(shared),
+        "native_numeric_fact_count": sum(len(row["fields"]) for row in native.values()),
+        "parsed_numeric_fact_count": sum(len(row["fields"]) for row in parsed.values()),
+        "native_only_identifiers": len(set(native) - set(parsed)),
+        "parsed_only_identifiers": len(set(parsed) - set(native)),
+        "shared_record_mismatches": different_rows, "FILETIME_mismatches": times,
+        "FILETIME_native_minus_parsed_ticks": time_deltas,
+        "FILETIME_delta_samples_omitted": omitted_time_deltas,
+        "field_presence_mismatches": presence, "field_numeric_value_mismatches": values,
+        "native_canonical_sha256": hashlib.sha256(encoded([native[key] for key in sorted(native)])).hexdigest(),
+        "parsed_canonical_sha256": hashlib.sha256(encoded([parsed[key] for key in sorted(parsed)])).hexdigest(),
+        "first_shared_difference": first}}
 
 
 def main():
