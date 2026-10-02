@@ -29,6 +29,7 @@ CORPUS = (
     ("issue_38.evtx", 69632, "becab64455866f8fae5583fbaa5dab901115e4397ea7abe14f37ad732d5d7eb9", 1),
 )
 FIELD_NAMES = {path.rsplit("/", 1)[1]: maximum for path, maximum in NUMERIC_FIELDS.items()}
+SYSTEM_TIME_PATH = "Event/System/TimeCreated/@SystemTime"
 
 
 def installed_metadata_bytes(distribution):
@@ -182,20 +183,41 @@ def parsed_records(raw):
         return finish(self, raw, header, chunks, records, mode)
 
     with patch.object(Ledger, "finish", observe):
-        report = review(raw, mode="lenient")
+        report = review(raw, mode="lenient", fields=(SYSTEM_TIME_PATH,))
     if report["known_corruption_count"]:
         raise ValueError("new_parser_known_corruption")
     rows = []
+    identifier_differences = time_differences = 0
     for row in captured["records"]:
         fields = {}
+        system_times = []
         for fact in row["fields"]:
             if "numeric_value" in fact:
                 name = fact["path"].rsplit("/", 1)[1]
                 if name in fields:
                     raise ValueError("new_duplicate_numeric_fact")
                 fields[name] = fact["numeric_value"]
-        rows.append({"record_identifier": row["record_identifier"],
-                     "filetime_ticks": row["filetime_ticks"], "fields": fields})
+            if fact.get("path") == SYSTEM_TIME_PATH:
+                value = fact.get("selected_value")
+                if (fact["value_types"] == [17] and type(value) is dict
+                        and type(value.get("filetime_ticks")) is int
+                        and 0 <= value["filetime_ticks"] <= 2**64 - 1):
+                    system_times.append(value["filetime_ticks"])
+        if len(system_times) != 1 or "EventRecordID" not in fields:
+            raise ValueError("new_native_System_identity_uninterpreted")
+        system_identifier, system_ticks = fields["EventRecordID"], system_times[0]
+        identifier_differences += system_identifier != row["record_identifier"]
+        time_differences += system_ticks != row["filetime_ticks"]
+        # Native EventLogRecord properties belong to Event/System. Raw record
+        # headers remain separate evidence; neither value is overwritten.
+        rows.append({"record_identifier": system_identifier,
+                     "filetime_ticks": system_ticks, "fields": fields})
+    report["adapter_raw_header_vs_event_System"] = {
+        "status": "OPEN" if identifier_differences or time_differences else "PASS_OBSERVED_EQUALITY",
+        "records": len(rows), "identifier_differences": identifier_differences,
+        "FILETIME_differences": time_differences,
+        "raw_record_header_fields_preserved": True,
+        "relationship": "Distinct field domains; disagreement is retained, not repaired or assumed corruption."}
     return rows, report
 
 
@@ -297,6 +319,7 @@ def main():
                 raise ValueError("corpus_count_or_input_changed")
             results.append({"fixture": name, "input_sha256": expected_sha, "input_unchanged": True,
                             "product_status": report["status"], "product_complete": report["complete"],
+                            "raw_record_header_vs_event_System": report["adapter_raw_header_vs_event_System"],
                             **result})
     print(json.dumps({"oracle": "Windows EventLogReader FilePath ToXml numeric-only export",
                       "upstream_commit": COMMIT, "result": "PASS", "results": results,
@@ -313,6 +336,7 @@ if __name__ == "__main__":
                       "native_export_budget", "native_line_budget", "native_row_schema",
                       "native_fields_schema", "native_duplicate_json_key", "native_numeric_contract",
                       "native_numeric_range", "new_parser_known_corruption", "new_duplicate_numeric_fact",
+                      "new_native_System_identity_uninterpreted",
                       "comparison_duplicate_record_identifier", "native_fact_or_identity_mismatch",
                       "corpus_count_or_input_changed", "runtime_manifest_contract", "installed_version_identity",
                       "source_installed_runtime_budget", "built_wheel_budget",

@@ -12,7 +12,22 @@ import io
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 import windows_compare as adapter
-from fixture import ordinary
+from fixture import ordinary, ChunkWriter, TICKS, element, slot, pack, file, text
+
+
+def system_fixture(*, header_identifier=1, system_identifier=1, header_ticks=TICKS,
+                   system_ticks=TICKS, include_time=True, time_kind=17):
+    children = [element("EventID", [text("4624")]),
+                element("EventRecordID", [slot(0, 10)]), element("Level", [text("4")])]
+    values = [(10, pack("Q", system_identifier))]
+    if include_time:
+        children.append(element("TimeCreated", attrs=[("SystemTime", [slot(1, 17)])]))
+        values.append((time_kind, pack("Q", system_ticks)))
+    tree = element("Event", [element("System", children)],
+                   [("xmlns", [text("http://schemas.microsoft.com/win/2004/08/events/event")])])
+    writer = ChunkWriter()
+    writer.record(header_identifier, values, tree, ticks=header_ticks)
+    return file([writer.finish()])
 
 
 class NativeAdapterTests(unittest.TestCase):
@@ -90,9 +105,32 @@ class NativeAdapterTests(unittest.TestCase):
         self.assertIsNone(result["native_comparison_diagnostic"]["first_shared_difference"]["known_numeric_fields"]["Level"]["native"])
 
     def test_real_fixture_capture_keeps_product_report_caps(self):
-        rows, report = adapter.parsed_records(ordinary())
-        self.assertEqual((len(rows), report["status"]), (2, "PASS"))
-        self.assertEqual(sum(len(row["fields"]) for row in rows), 6)
+        rows, report = adapter.parsed_records(system_fixture())
+        self.assertEqual((len(rows), report["status"]), (1, "PASS"))
+        self.assertEqual(sum(len(row["fields"]) for row in rows), 3)
+        self.assertEqual(report["adapter_raw_header_vs_event_System"]["status"], "PASS_OBSERVED_EQUALITY")
+
+    def test_native_System_identity_remains_distinct_from_raw_record_header(self):
+        raw = system_fixture(header_identifier=11, system_identifier=77,
+                             header_ticks=TICKS, system_ticks=TICKS - 17)
+        rows, report = adapter.parsed_records(raw)
+        self.assertEqual(rows[0]["record_identifier"], 77)
+        self.assertEqual(rows[0]["filetime_ticks"], TICKS - 17)
+        self.assertEqual(report["records"][0]["record_identifier"], 11)
+        self.assertEqual(report["records"][0]["filetime_ticks"], TICKS)
+        status = report["adapter_raw_header_vs_event_System"]
+        self.assertEqual((status["status"], status["identifier_differences"], status["FILETIME_differences"]),
+                         ("OPEN", 1, 1))
+        self.assertEqual(adapter.compare(rows, rows)["mismatches"], 0)
+        wrong_domain = [{**rows[0], "record_identifier": 11, "filetime_ticks": TICKS}]
+        with redirect_stderr(io.StringIO()):
+            with self.assertRaisesRegex(ValueError, "native_fact_or_identity_mismatch"):
+                adapter.compare(wrong_domain, rows)
+
+    def test_missing_System_identity_does_not_fall_back_to_header(self):
+        for raw in (ordinary(), system_fixture(include_time=False), system_fixture(time_kind=0x91)):
+            with self.assertRaisesRegex(ValueError, "new_native_System_identity_uninterpreted"):
+                adapter.parsed_records(raw)
 
     def test_download_identity_and_bounded_read_is_enforced(self):
         import hashlib

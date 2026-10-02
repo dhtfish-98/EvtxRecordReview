@@ -1,6 +1,6 @@
 # Measured validation and limits
 
-Local source tests: 84 methods PASS on Python 3.14.6. Tests use a separately
+Local source tests: 86 methods PASS on Python 3.14.6. Tests use a separately
 written EVTX writer, not runtime parsing functions, and encode actual chunk/name/
 template/value/record bytes. Coverage includes resident and referenced templates,
 multiple chunks, exact 100 ns times, all declared scalars, vector arrays, nested
@@ -93,6 +93,23 @@ hashes. At most the first shared mismatch's whitelisted numeric values and hashe
 record identity are shown. Unknown field names, private values, XML and messages
 are never emitted. Two additional tests verify these aggregates, strong failure
 and private-value suppression. The required comparison remains pending.
+The diagnostic run, 37024170756 at commit
+`f2c4d1f1cba70a451873f54eccf0f811435ebc56`, showed one native and one parsed
+record with six numeric facts each and disjoint identifiers. By the frozen
+adapter's ordered control flow, the preceding 1,601-record system input had
+already passed; its separate success hash was not printed in this failed run.
+The one-record issue_38 input has different raw header and Event/System identifier
+and FILETIME fields. The native properties are now compared with the parsed
+Event/System/EventRecordID and exact typed TimeCreated/@SystemTime, while all six
+numeric fields still require exact equality. Missing or unsupported System
+identity raises a fixed validation error and never falls back to the header.
+The original raw header fields stay unchanged. Their disagreement is separately
+reported OPEN, rather than repaired or assumed corrupt. A private local control
+reproduced the old header canonical hash and matched the actual recorded native
+canonical hash using the Event/System projection; no raw event values were
+published. Two dedicated synthetic tests encode deliberately different header
+and System fields, preserve both, and reject comparison against the wrong domain.
+The new exact-commit native job must still be observed passing.
 Passing this targeted numeric comparison would not establish complete Windows
 exporter equivalence for the project's unsupported types, dialects or renderings.
 
