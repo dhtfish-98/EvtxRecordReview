@@ -1,6 +1,14 @@
 # Measured validation and limits
 
-Local source tests: 86 methods PASS on Python 3.14.6. Tests use a separately
+Version 0.1.1 re-audit (2026-10-03, Asia/Tokyo): local source tests are 87
+methods PASS on Python 3.14.6. The additional independent byte controls cover an
+empty allocated chunk with nonzero declarations, zero declarations and zero-filled
+allocated space in both strict/lenient modes. Each retains matching CRCs and
+original declarations, emits no invented record, and has OPEN incomplete coverage.
+The exact 0.1.1 package/installed observations are recorded separately in
+`evidence/reaudit-0.1.1.json`; new hosted/native CI must be observed for this version.
+
+Historical 0.1.0 source validation comprised 86 methods PASS. Tests use a separately
 written EVTX writer, not runtime parsing functions, and encode actual chunk/name/
 template/value/record bytes. Coverage includes resident and referenced templates,
 multiple chunks, exact 100 ns times, all declared scalars, vector arrays, nested
@@ -112,6 +120,12 @@ and System fields, preserve both, and reject comparison against the wrong domain
 The new exact-commit native job must still be observed passing.
 Passing this targeted numeric comparison would not establish complete Windows
 exporter equivalence for the project's unsupported types, dialects or renderings.
+The subsequent 0.1.0 run 37025713841 at commit
+`c6b12c0497ee9e28d71c1322c5c01790011732f2` passed all three jobs, including native
+Windows. Actual export comparison covered 1,602 records and 9,496 numeric facts
+across both fixed inputs with zero mismatches. Both product reports remained OPEN
+and incomplete. This historical finite gate is not a native result for 0.1.1;
+the new revision must pass its own artifact-bound job.
 
 All new runtime, test, package, CI, documentation and license files are reviewed
 in full and hashed in `evidence/source-review.json` at freeze. Build tools are

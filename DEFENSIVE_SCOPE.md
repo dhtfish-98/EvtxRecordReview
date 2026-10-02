@@ -16,6 +16,10 @@ record-offset discrepancies are FAIL. File allocation-number ambiguity, dirty
 metadata, unknown nonzero chunk flag fields and uninterpreted record-number ranges
 are OPEN. Physical ordering is reported; circular logical ordering, inactive
 chunks, trailing/slack contents and recovered-record identity are not inferred.
+An allocated chunk containing no observed record keeps its declared ranges and
+CRC results but has `allocation_model=UNVERIFIED` and an OPEN coverage finding.
+This applies to all-zero declarations as well: empty-chunk conventions are not
+assumed to corroborate a range when no record can be examined.
 
 The file chunk-count profile is the modern libyal DWORD at byte offset 42,
 followed by 74 uninterpreted bytes at 46..119. The frozen historical python-evtx

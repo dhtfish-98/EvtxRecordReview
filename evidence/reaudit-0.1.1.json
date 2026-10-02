@@ -1,0 +1,21 @@
+{
+  "project": "EvtxRecordReview",
+  "version": "0.1.1",
+  "date": "2026-10-03",
+  "timezone": "Asia/Tokyo",
+  "source_tests": {
+    "result": "PASS",
+    "methods": 87,
+    "python": "3.14.6"
+  },
+  "repair": "Empty allocated chunks retain CRCs/declarations but emit OPEN incomplete coverage with UNVERIFIED allocation model.",
+  "fresh_installed_and_artifact_evidence": "External re-audit engineering record binds final wheel/sdist source and consumer identities; no circular archive self-hash.",
+  "new_exact_commit_CI": "OPEN_UNTIL_PARENT_OBSERVES_THIS_REVISION",
+  "external": {
+    "CVP": "OPEN",
+    "authenticity": "OPEN",
+    "complete_platform_equivalence": "OPEN"
+  },
+  "implementation_review": "Final runtime read in full; complete changed regression cases/docs/metadata reviewed; unchanged prior scope review retained with exact byte identities.",
+  "history": "Version0.1.0 remains a separate historical release; no old asset or external evidence is overwritten."
+}

@@ -20,7 +20,7 @@ def main(argv=None):
     parser.add_argument("--field", action="append", default=[])
     parser.add_argument("--jsonl", action="store_true")
     parser.add_argument("--max-bytes", type=int, default=Limits().input_bytes)
-    parser.add_argument("--version", action="version", version="EvtxRecordReview 0.1.0")
+    parser.add_argument("--version", action="version", version="EvtxRecordReview 0.1.1")
     args = parser.parse_args(argv)
     try:
         limits = replace(Limits(), input_bytes=args.max_bytes)

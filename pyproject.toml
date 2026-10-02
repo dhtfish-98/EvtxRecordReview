@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evtx-record-review"
-version = "0.1.0"
+version = "0.1.1"
 description = "Bounded offline EVTX integrity, BinXML and source-positioned event evidence"
 readme = "README.md"
 requires-python = ">=3.11"

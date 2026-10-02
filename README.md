@@ -27,6 +27,9 @@ or integrity failure; `OPEN` records unsupported, partial or budget-limited work
 Known FAIL dominates OPEN. `complete` describes coverage, so complete FAIL does
 not mean a healthy file. External authenticity, host execution, Windows exporter
 equivalence and CVP application eligibility remain OPEN even for structural PASS.
+Version 0.1.1 keeps an empty allocated chunk's original range declarations and
+matching CRCs, but marks its allocation model UNVERIFIED with an OPEN finding.
+No record is invented from those declarations, including an all-zero range.
 CRC32 is not a cryptographic authenticity proof.
 
 A record's `VERIFIED_STRUCTURE` requires matching file/chunk CRC, its trailer and

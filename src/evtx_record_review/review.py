@@ -178,6 +178,12 @@ def _chunk(raw, start, index, header, ledger, records, chunks, ids, selected, mo
     if not walked:
         ledger.add("OPEN", "remaining_chunk_records_unassessed", position)
     range_failure = False
+    if not observed_ids:
+        # No record was available to corroborate the declared first/last ranges.
+        # Empty-chunk conventions are outside this finite allocation profile,
+        # including all-zero declarations; matching CRCs do not close that gap.
+        ledger.add("OPEN", "empty_chunk_declared_ranges_uninterpreted", start + 8)
+        chunk["allocation_model"] = "UNVERIFIED"
     if walked and observed_offsets and observed_offsets[-1] != last_offset:
         ledger.add("FAIL", "last_record_offset_mismatch", start + 44)
         range_failure = True

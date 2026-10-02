@@ -4,4 +4,4 @@ from .contracts import Limits
 from .review import review
 
 __all__ = ["Limits", "review"]
-__version__ = "0.1.0"
+__version__ = "0.1.1"

@@ -78,6 +78,32 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(chunk["header_crc32_calculated"], binascii.crc32(raw[4096:4216]+raw[4224:4608]) & 0xffffffff)
         self.assertEqual(chunk["data_crc32_calculated"], binascii.crc32(raw[4608:4096+chunk["free_relative_offset"]]) & 0xffffffff)
 
+    def test_empty_chunk_ranges_are_unverified_even_with_matching_crcs(self):
+        for first_number, last_number, first_id, last_id, last_offset, free in (
+            (1, 1, 1, 1, 512, 512),
+            (0, 0, 0, 0, 0, 512),
+            (0, 0, 0, 0, 0, 1024),
+        ):
+            chunk = bytearray(65536)
+            chunk[:8] = b"ElfChnk\0"
+            struct.pack_into("<QQQQIIII", chunk, 8, first_number, last_number,
+                             first_id, last_id, 128, last_offset, free, 0)
+            raw = file([repair_chunk(chunk)])
+            for mode in ("strict", "lenient"):
+                with self.subTest(free=free, declared_id=first_id, mode=mode):
+                    result = review(raw, mode=mode)
+                    self.assertEqual((result["status"], result["complete"]), ("OPEN", False))
+                    self.assertEqual(result["records"], [])
+                    self.assertIn("empty_chunk_declared_ranges_uninterpreted", codes(result))
+                    observed = result["chunks"][0]
+                    self.assertEqual(observed["integrity"], "PASS")
+                    self.assertEqual(observed["allocation_model"], "UNVERIFIED")
+                    self.assertEqual(observed["first_record_identifier"], first_id)
+                    self.assertEqual(observed["last_record_identifier"], last_id)
+                    self.assertEqual(observed["last_record_relative_offset"], last_offset)
+                    self.assertEqual(observed["free_relative_offset"], free)
+                    self.assertEqual(result["external"]["log_authenticity"], "OPEN")
+
     def test_multiple_chunks_and_template_names_do_not_cross(self):
         writers = [ChunkWriter(), ChunkWriter()]
         writers[0].record(1)

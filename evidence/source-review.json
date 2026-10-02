@@ -2,9 +2,9 @@
   "project": "EvtxRecordReview",
   "review_status": "COMPLETE_SELECTED_NEW_SOURCE_REVIEW",
   "runtime_files": 10,
-  "runtime_lines": 1158,
-  "test_methods": 86,
-  "new_files_reviewed": 32,
+  "runtime_lines": 1164,
+  "test_methods": 87,
+  "new_files_reviewed": 33,
   "files": [
     {
       "path": ".gitattributes",
@@ -29,9 +29,9 @@
     },
     {
       "path": "DEFENSIVE_SCOPE.md",
-      "bytes": 5510,
-      "lines": 83,
-      "sha256": "1fe09fe24961a71181d445db8c9b3a4cf18b91a31660d01e2ce6d1ea230bac22",
+      "bytes": 5811,
+      "lines": 87,
+      "sha256": "76facac5e8c0176361dbd4522642fedf809582e6b0f0b1b8a162033c2461d827",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -64,16 +64,16 @@
     },
     {
       "path": "README.md",
-      "bytes": 5240,
-      "lines": 78,
-      "sha256": "341d8fc2eba7b1d82823a6fcbffe221160b87458dc5c2904676bd7c66f07afc8",
+      "bytes": 5474,
+      "lines": 81,
+      "sha256": "6c684d776c322c9f0990cedb4e21b4b20eaa6bd30615937fa50022ae8049ae0f",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 8721,
-      "lines": 122,
-      "sha256": "ac82a6461bc352786137d10eaa806f9e2cd90d9bd8af5a2f110797c7744dcced",
+      "bytes": 9715,
+      "lines": 136,
+      "sha256": "95003e5b16046cf098ee7d58f137bd5037d6c5954a97d8aa9332dec7552790ae",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -115,7 +115,7 @@
       "path": "pyproject.toml",
       "bytes": 654,
       "lines": 21,
-      "sha256": "c1e21bbcaf3c26614f7a76b2349a27a63003b5c91e822148221814686edc07c9",
+      "sha256": "114629b8fff0fc74e26efcf5dcf5c03169a5cc5a2205ee98fae2397d480c93a1",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -129,7 +129,7 @@
       "path": "src/evtx_record_review/__init__.py",
       "bytes": 193,
       "lines": 7,
-      "sha256": "e905e4f57b76d3cdb0b554350fc95267ddcbdec10f0b6baabe4cba4877d1304b",
+      "sha256": "b661c6325c3c98ecce6274dd558973e69e52d00a19ef4bdfdaecbeb43fa2eb4a",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -157,7 +157,7 @@
       "path": "src/evtx_record_review/cli.py",
       "bytes": 2143,
       "lines": 47,
-      "sha256": "2151af4a30ba9eb5b6638e51729550909a5e947faf523afe6ae93d8c111c951a",
+      "sha256": "1bea252201ce5c4c9591d1a3066228372e79834736bbf3c6051749c40dbef3cd",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -183,9 +183,9 @@
     },
     {
       "path": "src/evtx_record_review/review.py",
-      "bytes": 10536,
-      "lines": 200,
-      "sha256": "470553a0d08548616128072c4ae86c1e065d5baac31770b27b37ba4cae19c69f",
+      "bytes": 10932,
+      "lines": 206,
+      "sha256": "1b1752a03742620636d816064970ac4db6a3b8770c01e7991b5afe7f1a3bf9ab",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -204,9 +204,9 @@
     },
     {
       "path": "tests/test_review.py",
-      "bytes": 40484,
-      "lines": 717,
-      "sha256": "b0982a230579f0d7f8fb383e5f31c40492900fbebb50c1c8c512c07c346c99ad",
+      "bytes": 42079,
+      "lines": 743,
+      "sha256": "9283e9172c5b3be65fc3cd04db8b0e73b86591ef73ad864f48c6035c35593f0c",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -229,6 +229,13 @@
       "lines": 77,
       "sha256": "2ada2f0f093d132f259d542f0953c412cfdcd3d6cf1c2aa377f2d056c5de657d",
       "read_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evidence/reaudit-0.1.1.json",
+      "bytes": 981,
+      "lines": 21,
+      "sha256": "fa60b67cf223bf44eb7b0b1fb108ca2cac4dfbbf24a8712292fdfc5f6e50ae06",
+      "read_scope": "ENTIRE_FILE"
     }
   ],
   "scope": "All new runtime/tests/docs/metadata/CI/licenses/evidence, no excluded new project code",
@@ -238,5 +245,8 @@
     "CVP eligibility",
     "acquisition authenticity",
     "GitHub publication and exact-commit CI until parent observes them"
-  ]
+  ],
+  "version": "0.1.1",
+  "reaudit_date": "2026-10-03",
+  "reaudit_review_basis": "Prior complete selected-source review retained for unchanged files; final runtime and changed source/test/CLI/docs/metadata inspected in this re-audit. Current package/installed/CI states belong to separately bound external records."
 }
