@@ -111,6 +111,11 @@ class NativeAdapterTests(unittest.TestCase):
                 self.assertEqual(result["modules_compared"], 10)
                 self.assertEqual(result["source_wheel_installed"], "IDENTICAL")
                 self.assertEqual(result["built_wheel_sha256"], hashlib.sha256(wheel.read_bytes()).hexdigest())
+                original_source = source.read_bytes()
+                source.write_bytes(original_source.replace(b"\n", b"\r\n"))
+                with self.assertRaisesRegex(ValueError, "installed_runtime_source_identity"):
+                    adapter.installed_identity(root)
+                source.write_bytes(original_source)
                 installed.write_bytes(b"# CHANGED_SYNTHETIC\n")
                 with self.assertRaisesRegex(ValueError, "installed_runtime_source_identity"):
                     adapter.installed_identity(root)

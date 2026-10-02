@@ -4,8 +4,15 @@
   "runtime_files": 10,
   "runtime_lines": 1158,
   "test_methods": 81,
-  "new_files_reviewed": 30,
+  "new_files_reviewed": 32,
   "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 55,
+      "lines": 4,
+      "sha256": "e2692bbd6f476772ef3662b1d75966cbdd1a126f4fa6e979478e8833f0379cce",
+      "read_scope": "ENTIRE_FILE"
+    },
     {
       "path": ".github/workflows/ci.yml",
       "bytes": 1197,
@@ -36,9 +43,9 @@
     },
     {
       "path": "MANIFEST.in",
-      "bytes": 287,
-      "lines": 6,
-      "sha256": "bd4208f19e243033b341479fa6a779ffa670d314d9f8668c4fa1a3848387d6a8",
+      "bytes": 310,
+      "lines": 7,
+      "sha256": "b42fb68dd2cfe786cd8286b75b36e5a05ee1679ce498f64ad56dfb8ea92cb45a",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -64,9 +71,9 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 5146,
-      "lines": 74,
-      "sha256": "0b60127d42e5fff412a94acf669678c9d44357b703efdc3ef7f016b50e02be03",
+      "bytes": 5957,
+      "lines": 85,
+      "sha256": "e3fca8c2bfbd913c8ae5a95d178af0e2824c554b3073cac7b64ffcd43591be6c",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -74,6 +81,13 @@
       "bytes": 1071,
       "lines": 23,
       "sha256": "fb4505bb9cad4b025d59e6380b1fb5db91ebe52bf469ddf33010a9dc69a4e02c",
+      "read_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evidence/git-newline-control.json",
+      "bytes": 6892,
+      "lines": 162,
+      "sha256": "f948cea9e8b1d93240c1033a31f478a0a9ce3e0dc4d1bec64610aa3b82e8fed2",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -197,24 +211,24 @@
     },
     {
       "path": "tests/test_windows_compare.py",
-      "read_scope": "ENTIRE_FILE",
-      "bytes": 6720,
-      "lines": 129,
-      "sha256": "f15dd0030032b1f8279418b9265006dd8697640fcc4733251b0e85bbc85d8130"
+      "bytes": 7049,
+      "lines": 134,
+      "sha256": "a58eaf520404070cf4dc0620c078e8019402aff5e991067c0456dbd107a6f0be",
+      "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "tools/windows_compare.py",
-      "read_scope": "ENTIRE_FILE",
       "bytes": 10704,
       "lines": 237,
-      "sha256": "273ef603b89ce4b4c5bdbd832af4e66b70fae6536b65b609005762bf568e4abf"
+      "sha256": "273ef603b89ce4b4c5bdbd832af4e66b70fae6536b65b609005762bf568e4abf",
+      "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "tools/windows_export.ps1",
-      "read_scope": "ENTIRE_FILE",
       "bytes": 3599,
       "lines": 77,
-      "sha256": "2ada2f0f093d132f259d542f0953c412cfdcd3d6cf1c2aa377f2d056c5de657d"
+      "sha256": "2ada2f0f093d132f259d542f0953c412cfdcd3d6cf1c2aa377f2d056c5de657d",
+      "read_scope": "ENTIRE_FILE"
     }
   ],
   "scope": "All new runtime/tests/docs/metadata/CI/licenses/evidence, no excluded new project code",

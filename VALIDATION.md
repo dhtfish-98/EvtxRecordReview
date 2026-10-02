@@ -62,6 +62,17 @@ installed and wheel modules. The Windows job checks all ten runtime source,
 wheel and installed module hashes against the final source-review manifest, and
 installed metadata against wheel metadata before native export. Its aggregate
 includes wheel, source-review and canonical runtime-module hashes.
+The first exact-commit CI run, 37019744199 at commit
+`25908d2b008f3fddf81b74d9ccc225e7db0433d5`, passed the two Linux jobs but
+stopped on Windows at `installed_runtime_source_identity`, before native export.
+The failure log does not contain the mismatching file bytes or hashes, so its
+precise cause is not proven by that log. A controlled Git checkout with
+`core.autocrlf=true` changed all ten LF runtime files to CRLF without attributes;
+with the committed `.gitattributes` `eol=lf` rule, all ten raw byte hashes remained
+identical to their source-review entries. That rule is included in the source
+distribution. The artifact-gate regression also rejects a CRLF-only source
+mutation. Raw SHA checks remain unchanged; local checkout protection does not
+establish the pending native Windows comparison result.
 Passing this targeted numeric comparison would not establish complete Windows
 exporter equivalence for the project's unsupported types, dialects or renderings.
 
