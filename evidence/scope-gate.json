@@ -1,0 +1,214 @@
+{
+  "project": "EvtxRecordReview",
+  "status": "SOURCE_SCOPE_FULLY_REVIEWED_REWRITE_IMPLEMENTED",
+  "upstream": "williballenthin/python-evtx",
+  "commit": "1edde3655c676bd44990ce9762d6b8f73334ed1d",
+  "local_source": "/Users/ffffff/Documents/ClaudeCVPSignUP/research-cvp30-20261002/_sources_detection/williballenthin__python-evtx",
+  "full_reviewed_files": [
+    {
+      "path": "Evtx/BinaryParser.py",
+      "bytes": 19308,
+      "lines": 579,
+      "sha256": "34d0dc5a035cdb99ab12a2f3da0fd404d6d8b6a16af29378faf2dd50835111d5",
+      "git_blob_sha1": "10224db9de792727f47fa8d7c4231f7fc0c0a42e",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "Evtx/Evtx.py",
+      "bytes": 17234,
+      "lines": 515,
+      "sha256": "6ade2e1e026e67a918598271725116f9d18b53c5b5debad6a934a5b24d3b6765",
+      "git_blob_sha1": "261d184fabea78ed0c29aa129ea30fad827f2c11",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "Evtx/Nodes.py",
+      "bytes": 47341,
+      "lines": 1605,
+      "sha256": "a1b8ce8de6219ff54af9e65a0aacf70f5167567c6036225f355cfc2063cbcaeb",
+      "git_blob_sha1": "1cc9bc54df613f2152f77f53f6e9f641ca5d4c1a",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "Evtx/Views.py",
+      "bytes": 9943,
+      "lines": 294,
+      "sha256": "37a31f6d4ab5309ca1ed4e6170997dc9ca89d596f2921c08052f63ba952bacc2",
+      "git_blob_sha1": "b8b2cd2738dda5f8cfe499fddf1b4affd5f330f6",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "Evtx/__init__.py",
+      "bytes": 812,
+      "lines": 22,
+      "sha256": "a714a39a9c4e643144b4570502fdd963014b5c85b2222bb9666f646e908481b9",
+      "git_blob_sha1": "86999ebf93177bf372e44b02af1fc5c204920853",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_dates.py",
+      "bytes": 2003,
+      "lines": 73,
+      "sha256": "9176713d5d2ec69f12ad1922afa275bfe7d87d4933a754e0fba0d79079400655",
+      "git_blob_sha1": "9b2f7d058b5b508e1b98a3565098c391470d130f",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_dump.py",
+      "bytes": 1320,
+      "lines": 40,
+      "sha256": "24bb121d10fb662e88b844a555324356e6427313932d3e56ff9825af719e8f24",
+      "git_blob_sha1": "1450ced7d32d86d34454b56f913340754ac96294",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_dump_chunk_slack.py",
+      "bytes": 1635,
+      "lines": 44,
+      "sha256": "178875525eeb4ab3cee08fd8cf5a113d61ab19ab271b3cfeb424e88ca191cd05",
+      "git_blob_sha1": "0f7ff67c0bb851c75c6bd6ce0bc44ee0a5f9ec3c",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_dump_json.py",
+      "bytes": 3433,
+      "lines": 85,
+      "sha256": "b3466e201d9280ad7d5ac1b10a3fd44938ceb100ed245d40b9b3593b3946682d",
+      "git_blob_sha1": "71c7e70f3500849a177acffbef4e712a1b82f407",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_eid_record_numbers.py",
+      "bytes": 860,
+      "lines": 31,
+      "sha256": "96c68d6fa8a4ab7241fbeb025035a2c63038faac282a0706d48e4608c29cc02d",
+      "git_blob_sha1": "dac07626b8e7b8868ac3bc4fbfef7016dac277e7",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_extract_record.py",
+      "bytes": 1405,
+      "lines": 39,
+      "sha256": "df02cdf062557ee4f0e66caf26be5480d74216f6e1173e3b1db239a57e5b9b46",
+      "git_blob_sha1": "a9ec665e67c20ee6e9c790d5d8e7b8c496e99ca2",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_filter_records.py",
+      "bytes": 1699,
+      "lines": 62,
+      "sha256": "80b11f0da209281fc9e86524178b3e60a5f760423ce2e6cf7891de58a5c29d03",
+      "git_blob_sha1": "dd4a13a3c6bfd0720ca6ec73f8cbfd4bea215bed",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_info.py",
+      "bytes": 4375,
+      "lines": 114,
+      "sha256": "1cf47b6b755c1915977a4ead7c2db22fcb521fb480d6a0ec1f4ba527fa471aa3",
+      "git_blob_sha1": "3a008692329f43a8c715e753311f6e77b2fb5d08",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_record_structure.py",
+      "bytes": 3178,
+      "lines": 100,
+      "sha256": "4f6f7efac4f9ec79b290124842cb651e0b3a1370197a9b62b50f3b09e8a581dc",
+      "git_blob_sha1": "f3737241dbc2738b838837ffd996b226fbb4e833",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_record_template.py",
+      "bytes": 679,
+      "lines": 26,
+      "sha256": "fd98a7adcd08550d1133d495bb1338a32e787c7fddbd2447f94b98ab64e80d39",
+      "git_blob_sha1": "19bfbbcb7d933107d40bf325b4655a7728d5f54b",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_structure.py",
+      "bytes": 6467,
+      "lines": 185,
+      "sha256": "716dec10799eafcdd36738c84b76cbbe2825ad6dab0b5abe058f2acfb176e9f6",
+      "git_blob_sha1": "bdde6a1c6a2a6437782965f549acf8400a070469",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "evtx_scripts/evtx_templates.py",
+      "bytes": 1469,
+      "lines": 39,
+      "sha256": "d610092c9b41fb11c8ca7ec2b37c1360c000c909476a65580f964097d7cfd2d4",
+      "git_blob_sha1": "be99d4d14b27d3edc34c38ded935f4411318bc23",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "LICENSE.TXT",
+      "bytes": 11358,
+      "lines": 202,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "git_blob_sha1": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4462,
+      "lines": 74,
+      "sha256": "733ddc5e84d6c9f1ff8a40c2c8878a8769319b56b650d5244f83cbced4404d25",
+      "git_blob_sha1": "a91f53e63b7f86c055bef5f8ea69bfebc59bd08d",
+      "review_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 2309,
+      "lines": 80,
+      "sha256": "5f9f7a894868c2fb80890bea97f097dbef99a45578d88a1c808584846ab6fb7b",
+      "git_blob_sha1": "cf5c3d9c83d615af256631d6950abfc54ebbb2f7",
+      "review_scope": "ENTIRE_FILE"
+    }
+  ],
+  "full_reviewed_count": 20,
+  "total_lines": 4209,
+  "runtime_py_count": 5,
+  "runtime_py_lines": 3015,
+  "entry_scripts_py_count": 12,
+  "full_repository_audit": false,
+  "excluded": [
+    "upstream tests and binary corpus",
+    "upstream CI/docs other than README",
+    "hexdump/lxml/xmltodict implementation",
+    "Perl Parse-Evtx and complete libevtx C implementation"
+  ],
+  "extra_primary_reference": {
+    "commit": "53ff3377d1360a9a3a428e7190c289757ccbf82b",
+    "url": "https://raw.githubusercontent.com/libyal/libevtx/53ff3377d1360a9a3a428e7190c289757ccbf82b/documentation/Windows%20XML%20Event%20Log%20%28EVTX%29.asciidoc",
+    "sha256": "74e3d02a95c41a74d2187af65a0ba8be22afb5370bdc147474edb67cc30619d3",
+    "bytes": 94751,
+    "lines": 2608,
+    "runtime_bundled": false
+  },
+  "reference_selected_scope": "libevtx document lines1-990: identity/license/header/chunk/record/BinXML grammar and values, research-only; Microsoft MS-EVEN6 2.2.12/2.2.12.3/3.1.4.7.2 entire technical content",
+  "deleted_capabilities": [
+    "unbounded mmap of target",
+    "generic raw XML/JSON EventData dump",
+    "slack/raw record output",
+    "JSON file writes",
+    "XML/lxml input parsing/dynamic field helper",
+    "live collection, remote logs, injection, clear/remediation"
+  ],
+  "license": {
+    "name": "Apache-2.0",
+    "path": "LICENSE.TXT",
+    "complete_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  "new_implementation_contract": {
+    "file": "Explicit local immutable regular EVTX v3.1/v3.2, bounded header/count/physical chunk allocation/dirty evidence; full file/chunk CRC32; no carving/inactive salvage",
+    "records": "Sequential declared chunk record bounds, record magic/minimum/aligned size/trailer, IDs/ranges/duplicates, original offset and raw integer FILETIME plus exact100ns UTC where representable",
+    "BinXML": "Independent bounded lexer/AST for tokens0x00-0x0f with defined0x40 continuation flags; inline/backward-referenced chunk names and resident/backward-referenced templates; nested-BinXML recursion/cycle bounds; typed scalar/substitution/optional-NULL/dependency suppression; supported arrays typed vectors, unknown dialect/values/ambiguous expansion OPEN",
+    "privacy": "Default record IDs/UTC/event numeric System fields with hash/source locations; other names/text/EventData/SIDs/computer/channel/providers redacted to stable digest. Explicit selected field paths opt-in JSON values only, no generic original XML dump",
+    "errors": "Strict stops damaged structure; lenient continues only independently bounded records, propagates CRC-unverified provenance. FAIL known corruption dominates gaps; partial/unsupported record never VERIFIED",
+    "limits": "Input/chunks/records/tokens/references/depth/name/value bytes/array entries/work/findings/report/JSONL bounded. None-only typed Limits. Local reads nofollow path, regularity/devino/length/timestamps; no network/archive/stdin/target resource loading",
+    "verification": "Real synthetic multi-record/chunk EVTX resident/referenced templates+UTF16/null/nested/arrays, source facts and independent parser differential; mutatedCRC/trailer/boundaries/cycles/budgets/unchanged files; external Windows exporter equivalence OPEN until measured"
+  },
+  "initial_preimplementation_gate_sha256": "26e5421d1f02c9147435c2c32eba6a3734d387795783383a0bd638df741f1a30",
+  "gate_role": "Preimplementation selected source gate retained, status advanced at final source review; source scope identities unchanged."
+}

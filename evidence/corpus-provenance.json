@@ -1,0 +1,23 @@
+[
+  {
+    "source": "https://raw.githubusercontent.com/williballenthin/python-evtx/1edde3655c676bd44990ce9762d6b8f73334ed1d/tests/data/readme.md",
+    "path": "tests/data/readme.md",
+    "bytes": 622,
+    "sha256": "66cd3e91310f50a7abb9d885dd30cd9d138e22a435697c459663464c72ec1bbf",
+    "git_blob_sha1": "0980ab047addb59d1a42c31b3c0451431e417136"
+  },
+  {
+    "source": "https://raw.githubusercontent.com/williballenthin/python-evtx/1edde3655c676bd44990ce9762d6b8f73334ed1d/tests/data/system.evtx",
+    "path": "tests/data/system.evtx",
+    "bytes": 1118208,
+    "sha256": "ccb83cfefc9038017224cd97b800b66e248fe14529649ddf47907e5a2021449e",
+    "git_blob_sha1": "70f50e5d058ee8db3d4ee94c108eb7ad556977ac"
+  },
+  {
+    "source": "https://raw.githubusercontent.com/williballenthin/python-evtx/1edde3655c676bd44990ce9762d6b8f73334ed1d/tests/data/issue_38.evtx",
+    "path": "tests/data/issue_38.evtx",
+    "bytes": 69632,
+    "sha256": "becab64455866f8fae5583fbaa5dab901115e4397ea7abe14f37ad732d5d7eb9",
+    "git_blob_sha1": "a1e4d60388c99df549566181e61d3c6790e19dc8"
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "comparison": "fixed_upstream_parser_NOT_Windows_export",
+  "upstream_commit": "1edde3655c676bd44990ce9762d6b8f73334ed1d",
+  "adapter_dependency": "hexdump==3.3 research only",
+  "internal_observation": "Controlled Ledger.finish observer counts parsed facts before normal report budget; product cap remains enforced.",
+  "timestamp_contract": "raw integer ticks equal; old float formatted microseconds deliberately not used as oracle",
+  "raw_event_text_retained": false,
+  "results": [
+    {
+      "fixture": "synthetic.evtx",
+      "sha256": "0aa2703caf4a34e6580ed7b9c358264b641eb5352f470f0d74f3fa73d196a609",
+      "bytes": 69632,
+      "upstream_records": 2,
+      "new_records_before_report_budget": 2,
+      "identical_record_identity_offset_size_ticks": 2,
+      "equal_numeric_system_facts": 6,
+      "upstream_xml_parse_errors": 0,
+      "mismatches": [],
+      "new_known_corruption_count": 0,
+      "new_open_count": 0,
+      "omitted_findings": 0,
+      "retained_open_codes": {},
+      "tokens": 107,
+      "references": 119,
+      "public_report_status": "PASS",
+      "public_report_record_count": 2,
+      "binxml_complete_records": 2
+    },
+    {
+      "fixture": "system.evtx",
+      "sha256": "ccb83cfefc9038017224cd97b800b66e248fe14529649ddf47907e5a2021449e",
+      "bytes": 1118208,
+      "upstream_records": 1601,
+      "new_records_before_report_budget": 1601,
+      "identical_record_identity_offset_size_ticks": 1601,
+      "equal_numeric_system_facts": 9490,
+      "upstream_xml_parse_errors": 0,
+      "mismatches": [],
+      "new_known_corruption_count": 0,
+      "new_open_count": 581,
+      "omitted_findings": 69,
+      "retained_open_codes": {
+        "dirty_file_metadata_uncommitted": 1,
+        "unknown_chunk_flag_field": 6,
+        "nonzero_record_padding_uninterpreted": 387,
+        "foreign_Event_namespace_uninterpreted": 8,
+        "array_element_expansion_unassessed": 32,
+        "nonempty_null_storage_uninterpreted": 78
+      },
+      "tokens": 418075,
+      "references": 6218,
+      "public_report_status": "OPEN",
+      "public_report_record_count": 0,
+      "binxml_complete_records": 1130
+    },
+    {
+      "fixture": "issue_38.evtx",
+      "sha256": "becab64455866f8fae5583fbaa5dab901115e4397ea7abe14f37ad732d5d7eb9",
+      "bytes": 69632,
+      "upstream_records": 1,
+      "new_records_before_report_budget": 1,
+      "identical_record_identity_offset_size_ticks": 1,
+      "equal_numeric_system_facts": 6,
+      "upstream_xml_parse_errors": 0,
+      "mismatches": [],
+      "new_known_corruption_count": 0,
+      "new_open_count": 2,
+      "omitted_findings": 0,
+      "retained_open_codes": {
+        "unknown_chunk_flag_field": 1,
+        "nonzero_record_padding_uninterpreted": 1
+      },
+      "tokens": 459,
+      "references": 165,
+      "public_report_status": "OPEN",
+      "public_report_record_count": 1,
+      "binxml_complete_records": 0
+    }
+  ]
+}

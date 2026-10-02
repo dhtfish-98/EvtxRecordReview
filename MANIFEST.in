@@ -1,0 +1,6 @@
+include README.md ORIGIN.md DEFENSIVE_SCOPE.md VALIDATION.md LICENSE NOTICE pyproject.toml requirements-build.txt
+recursive-include licenses *.txt
+recursive-include tests *.py
+recursive-include tools *.py *.ps1
+recursive-include evidence *.json
+recursive-include .github/workflows *.yml
