@@ -50,6 +50,8 @@ jobs:
       run:
         working-directory: ${{ github.workspace }}/Build/源码
     env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
       TMPDIR: ${{ github.workspace }}/Build/临时
       TMP: ${{ github.workspace }}/Build/临时
       TEMP: ${{ github.workspace }}/Build/临时
