@@ -43,37 +43,37 @@
     },
     {
       "path": "MANIFEST.in",
-      "bytes": 364,
-      "lines": 9,
-      "sha256": "da7b4fb75983288e512773d129ed568da1a45b9550a562ddf13007016e79f049",
+      "bytes": 361,
+      "lines": 10,
+      "sha256": "97f8eb6d97f68f33e56c688208abeac3652c45b43a15cccf06b4891b58e7d3c8",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "NOTICE",
-      "bytes": 1476,
-      "lines": 23,
-      "sha256": "8fac629dd9baec7819296667b17ba6beafba17d5dd276d06f4aed5f25080e929",
+      "bytes": 465,
+      "lines": 9,
+      "sha256": "65493c80b2e8080a770ac4a74fc8749914cb7c20472f19cf17dad86beb6dc5c2",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "ORIGIN.md",
-      "bytes": 3279,
-      "lines": 46,
-      "sha256": "d989d72717d9abc96d5a91cc57c3406d69a6df18e9454918aa8ad7b63a41005f",
+      "bytes": 3239,
+      "lines": 44,
+      "sha256": "9dadbc482788596af3419a1a2c712995bb4cbfa9eb4e1ab74a751e76ac2fe068",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "README.md",
       "bytes": 6023,
       "lines": 86,
-      "sha256": "6a94466f8d96b846f3bf297601d4169a2d9bf5e5d5033b5bebd240563ad7a147",
+      "sha256": "4de0cad826ac2488fce459b895ff7884cb1bf8fb1ceb17a5251f804397555065",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 11961,
-      "lines": 154,
-      "sha256": "ef8f67116f24a8d7fadf262fa14c3b82ca9365134716688d257f496ca4a62510",
+      "bytes": 13060,
+      "lines": 162,
+      "sha256": "a7458eeb2c3ce15ebe4852cabddf19ad59fdfa49aee3df4c4e4352bd230cc685",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -105,17 +105,10 @@
       "read_scope": "ENTIRE_FILE"
     },
     {
-      "path": "licenses/python-evtx-Apache-2.0.txt",
-      "bytes": 11358,
-      "lines": 202,
-      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-      "read_scope": "ENTIRE_FILE"
-    },
-    {
       "path": "pyproject.toml",
-      "bytes": 627,
+      "bytes": 609,
       "lines": 21,
-      "sha256": "4c8316a24449097d1636bd1cb4e9ae5555b8d8df24b70ff38a8363c2570ff8a0",
+      "sha256": "83aac6014ef0525ccb22a1854c70f13f3b4886fb35cbca25c696a8b291458c95",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -129,7 +122,7 @@
       "path": "src/evtx_record_review/__init__.py",
       "bytes": 208,
       "lines": 9,
-      "sha256": "5c58edcfc9c4b9e885e972e296f09c973d3749a937bbdd131105ffefeaee2d8c",
+      "sha256": "ff7b89ed0b6e76e218ee74a0659ee45d03a506536b20dc4519302d81d1b8da62",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -157,7 +150,7 @@
       "path": "src/evtx_record_review/cli.py",
       "bytes": 2143,
       "lines": 47,
-      "sha256": "8c529c789ba3e42be7e39f6955f874eda1c4be13d3b437f64971c4cbbd2086de",
+      "sha256": "90a74ebc492cd140b4b9981bffc16fad1488fffad65874767e86ac20acb42872",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -245,8 +238,8 @@
     },
     {
       "path": "ATTRIBUTION_UPDATE.json",
-      "bytes": 935,
-      "sha256": "5576525bc1cb51fd0f751ae68393cc94d3fd338adb7ad6fea202b37ef7e8374e",
+      "bytes": 1051,
+      "sha256": "7dd359a125a286804bd582491246efaeddd2a395084fa56ce9c18729f8746314",
       "read_scope": "ENTIRE_CURRENT_FILE"
     }
   ],
@@ -258,13 +251,14 @@
     "acquisition authenticity",
     "GitHub publication and exact-commit CI until parent observes them"
   ],
-  "version": "0.1.2",
+  "version": "0.1.3",
   "reaudit_date": "2026-10-03",
   "reaudit_review_basis": "Prior complete selected-source review retained for unchanged files; final runtime and changed source/test/CLI/docs/metadata inspected in this re-audit. Current package/installed/CI states belong to separately bound external records. Final adapter version gate and all changed controls reviewed; expected version is tied to trusted source pyproject rather than installed metadata alone.",
-  "current_attribution_version": "0.1.2",
+  "current_attribution_version": "0.1.3",
   "current_implementation_author": "dhtfish98",
-  "current_validation": "ATTRIBUTION_UPDATE.json",
+  "current_validation": "LICENSE_CLEANUP.json",
   "current_functional_revision": "Positive mandatory safe-file flags and typed, operation-complete dir_fd support guard; current full inventory in SOURCE_MANIFEST.json.",
   "current_source_manifest": "SOURCE_MANIFEST.json",
-  "inventory_exclusions": "This review inventory and SOURCE_MANIFEST.json exclude their own/recursive manifest bytes; full current repository file identities are in SOURCE_MANIFEST.json and external batch report."
+  "inventory_exclusions": "This review inventory and SOURCE_MANIFEST.json exclude their own/recursive manifest bytes; full current repository file identities are in SOURCE_MANIFEST.json and external batch report.",
+  "current_material_cleanup": "Only actual current files inventoried; source-only original design licenses/notice copies removed. Genuine distributed third-party material remains attributed."
 }

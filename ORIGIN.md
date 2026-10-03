@@ -1,14 +1,12 @@
 # Origin and attribution
 
-Current implementation author and maintainer: **dhtfish98**. Current package version: **0.1.2**. Upstream authors and reused components retain their original attribution.
+Current implementation author and maintainer: **dhtfish98**. Current package version: **0.1.3**. Upstream authors and reused components retain their original attribution.
 
 
 New implementation author: dhtfish98. This code is informed by
 [williballenthin/python-evtx](https://github.com/williballenthin/python-evtx/tree/1edde3655c676bd44990ce9762d6b8f73334ed1d),
-frozen at `1edde3655c676bd44990ce9762d6b8f73334ed1d`, Apache-2.0. The original
-Willi Ballenthin/Mandiant authorship and upstream historical acknowledgement of
-Andreas Schuster are retained in NOTICE and the complete upstream license.
-The applicant is not represented as the sole original author of upstream work.
+frozen at `1edde3655c676bd44990ce9762d6b8f73334ed1d`, Apache-2.0. This is a source reference, not a bundled implementation. The original project
+and its historical research acknowledgements are not claimed as this project's work. No duplicate reference license is shipped.
 
 The entire selected source scope was read: all five Evtx runtime modules
 (BinaryParser, Evtx, Nodes, Views and package init), all 12 evtx_scripts entries,

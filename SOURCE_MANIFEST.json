@@ -1,9 +1,10 @@
 {
   "schema": 1,
   "project": "EvtxRecordReview",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "implementation_author": "dhtfish98",
   "self_excluded_to_avoid_recursive_hash": true,
+  "current_validation": "LICENSE_CLEANUP.json",
   "files": [
     {
       "path": ".gitattributes",
@@ -22,8 +23,8 @@
     },
     {
       "path": "ATTRIBUTION_UPDATE.json",
-      "sha256": "5576525bc1cb51fd0f751ae68393cc94d3fd338adb7ad6fea202b37ef7e8374e",
-      "bytes": 935
+      "sha256": "7dd359a125a286804bd582491246efaeddd2a395084fa56ce9c18729f8746314",
+      "bytes": 1051
     },
     {
       "path": "DEFENSIVE_SCOPE.md",
@@ -36,29 +37,34 @@
       "bytes": 11358
     },
     {
+      "path": "LICENSE_CLEANUP.json",
+      "sha256": "31deeb91aea0c7dc385fd76c8eff41ec2d775d9b67da9f95976bcf1355809dfb",
+      "bytes": 796
+    },
+    {
       "path": "MANIFEST.in",
-      "sha256": "da7b4fb75983288e512773d129ed568da1a45b9550a562ddf13007016e79f049",
-      "bytes": 364
+      "sha256": "97f8eb6d97f68f33e56c688208abeac3652c45b43a15cccf06b4891b58e7d3c8",
+      "bytes": 361
     },
     {
       "path": "NOTICE",
-      "sha256": "8fac629dd9baec7819296667b17ba6beafba17d5dd276d06f4aed5f25080e929",
-      "bytes": 1476
+      "sha256": "65493c80b2e8080a770ac4a74fc8749914cb7c20472f19cf17dad86beb6dc5c2",
+      "bytes": 465
     },
     {
       "path": "ORIGIN.md",
-      "sha256": "d989d72717d9abc96d5a91cc57c3406d69a6df18e9454918aa8ad7b63a41005f",
-      "bytes": 3279
+      "sha256": "9dadbc482788596af3419a1a2c712995bb4cbfa9eb4e1ab74a751e76ac2fe068",
+      "bytes": 3239
     },
     {
       "path": "README.md",
-      "sha256": "6a94466f8d96b846f3bf297601d4169a2d9bf5e5d5033b5bebd240563ad7a147",
+      "sha256": "4de0cad826ac2488fce459b895ff7884cb1bf8fb1ceb17a5251f804397555065",
       "bytes": 6023
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "ef8f67116f24a8d7fadf262fa14c3b82ca9365134716688d257f496ca4a62510",
-      "bytes": 11961
+      "sha256": "a7458eeb2c3ce15ebe4852cabddf19ad59fdfa49aee3df4c4e4352bd230cc685",
+      "bytes": 13060
     },
     {
       "path": "evidence/corpus-provenance.json",
@@ -87,18 +93,13 @@
     },
     {
       "path": "evidence/source-review.json",
-      "sha256": "4fc80a319b098ff9b56a6c663e62254bcd016780787e7e1445f41f9d1a91e91e",
-      "bytes": 9304
-    },
-    {
-      "path": "licenses/python-evtx-Apache-2.0.txt",
-      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-      "bytes": 11358
+      "sha256": "e397f83e6cee540f060292d6970be6961dd8c20eb50c98f0593fa88238052f3b",
+      "bytes": 9268
     },
     {
       "path": "pyproject.toml",
-      "sha256": "4c8316a24449097d1636bd1cb4e9ae5555b8d8df24b70ff38a8363c2570ff8a0",
-      "bytes": 627
+      "sha256": "83aac6014ef0525ccb22a1854c70f13f3b4886fb35cbca25c696a8b291458c95",
+      "bytes": 609
     },
     {
       "path": "requirements-build.txt",
@@ -107,7 +108,7 @@
     },
     {
       "path": "src/evtx_record_review/__init__.py",
-      "sha256": "5c58edcfc9c4b9e885e972e296f09c973d3749a937bbdd131105ffefeaee2d8c",
+      "sha256": "ff7b89ed0b6e76e218ee74a0659ee45d03a506536b20dc4519302d81d1b8da62",
       "bytes": 208
     },
     {
@@ -127,7 +128,7 @@
     },
     {
       "path": "src/evtx_record_review/cli.py",
-      "sha256": "8c529c789ba3e42be7e39f6955f874eda1c4be13d3b437f64971c4cbbd2086de",
+      "sha256": "90a74ebc492cd140b4b9981bffc16fad1488fffad65874767e86ac20acb42872",
       "bytes": 2143
     },
     {

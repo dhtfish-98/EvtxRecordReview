@@ -1,23 +1,9 @@
 EvtxRecordReview
-Copyright 2026 dhtfish98. New implementation and tests.
+Copyright 2026 dhtfish98.
+New finite cursor/AST/type/projection/integrity-ledger implementation, Apache-2.0.
 
-This project was informed by a complete review of the selected python-evtx
-runtime and entry scripts, fixed commit 1edde3655c676bd44990ce9762d6b8f73334ed1d.
-python-evtx copyright 2012, 2013 Willi Ballenthin, while at Mandiant.
-Its complete Apache License 2.0 is retained in licenses/python-evtx-Apache-2.0.txt.
-Original authors retain authorship; the applicant is not represented as the sole
-original author of python-evtx. Its README credits Andreas Schuster's EVTX format
-research and Parse-Evtx work. That attribution is preserved as historical context;
-Parse-Evtx code was not audited, copied, bundled or invoked here.
-
-The new runtime does not import or wrap python-evtx or hexdump. Its AST, bounded
-cursors, typed value model, event projection, corruption/coverage ledger, CLI and
-synthetic fixture writer are independently written. The local snapshot-reader
-pattern is shared with other projects in this portfolio; it is
-not presented as a novel EVTX format algorithm or a separate original invention.
-
-Microsoft MS-EVEN6 selected technical specifications and libyal/libevtx's fixed
-EVTX format document informed binary semantics. Their text and implementations
-are not bundled. Original upstream parser plus hexdump 3.3 and frozen binary
-fixtures were used only as research verification dependencies. No upstream
-fixture, raw event contents or third-party runtime is shipped in these packages.
+Mechanism reference: williballenthin/python-evtx at
+1edde3655c676bd44990ce9762d6b8f73334ed1d; Microsoft MS-EVEN6 and
+libyal/libevtx format references. Their runtime, documentation and raw fixtures
+are not bundled. Fixed research fixture identities are evidence, not raw events.
+The local snapshot-reader pattern is shared portfolio work.

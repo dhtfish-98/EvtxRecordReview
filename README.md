@@ -9,7 +9,7 @@ chunk CRC32, record boundaries and trailers, then interprets EVTX BinXML names,
 templates and typed substitutions to report positioned event evidence.
 
 ```sh
-python -m pip install ./dist/evtx_record_review-0.1.2-py3-none-any.whl
+python -m pip install ./dist/evtx_record_review-0.1.3-py3-none-any.whl
 evtx-record-review /absolute/physical-path/snapshot.evtx
 evtx-record-review /absolute/physical-path/snapshot.evtx --mode lenient --jsonl
 evtx-record-review /absolute/physical-path/snapshot.evtx --field Event/System/Computer
