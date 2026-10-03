@@ -1,6 +1,8 @@
+> 目录已整理：文档在「项目文档」，构建、缓存与暂存输入在「Build」。从仓库根目录运行 `python3 构建.py --build`；如需使用本文原有源码命令，先运行 `python3 构建.py --stage --ci`，再进入 `Build/源码`。暂存会恢复原输入路径。现有版本和历史验证记录按各自提交理解。
+
 # EvtxRecordReview
 
-Current implementation author and maintainer: **dhtfish98**. Current package version: **0.1.2**. Upstream authors and reused components retain their original attribution.
+Current implementation author and maintainer: **dhtfish98**. Current package version: **0.1.3**. Upstream authors and reused components retain their original attribution.
 
 
 Review an already acquired local EVTX snapshot without collecting from a host,
@@ -46,7 +48,7 @@ CRC failure; it does not scan for replacement magic or recover slack.
 The implementation supports EVTX 3.1/3.2, chunk-local resident and previously
 parsed referenced names/templates, deferred forward bucket-chain checks, scalar
 variants, optional NULL/dependency suppression, nested BinXML, and typed arrays
-for the finite types documented in [DEFENSIVE_SCOPE.md](DEFENSIVE_SCOPE.md).
+for the finite types documented in [DEFENSIVE_SCOPE.md](<DEFENSIVE_SCOPE.md>).
 Windows repeated-element array rendering, multi-fragment event documents,
 namespace prefix resolution, nonempty NULL storage, nonzero alignment bytes,
 ANSI code pages and unknown versions/types/flags remain OPEN. Paths are literal
@@ -80,7 +82,7 @@ temporarily downloads two fixed public research fixtures; product runtime stays 
 
 Development: install `requirements-build.txt`, run `python -m build --no-isolation`
 and `PYTHONPATH=src:tests python -m unittest discover -s tests -v`. Runtime has no
-third-party dependencies. See [ORIGIN.md](ORIGIN.md) for authorship and source scope
-and [VALIDATION.md](VALIDATION.md) for measured evidence and remaining limits.
+third-party dependencies. See [ORIGIN.md](<ORIGIN.md>) for authorship and source scope
+and [VALIDATION.md](<VALIDATION.md>) for measured evidence and remaining limits.
 
 Safe local file input requires positive integer `O_DIRECTORY`, `O_NOFOLLOW`, `O_NONBLOCK` flags, plus directory-relative operations only where used by this reader. Missing, None, zero or boolean flags return the existing controlled unsupported/error result before opening input. File-reader validation covers macOS/Linux; native Windows safe file reading is not established.

@@ -1,0 +1,45 @@
+{
+  "schema": "project-build-layout.v1",
+  "project": "EvtxRecordReview",
+  "author": "dhtfish98",
+  "kind": "python",
+  "base_public_commit": "b0cd52d5f5e547f2cb8ac9e64a3de10fcf42ba4e",
+  "restored_inputs": [
+    {
+      "original": "DEFENSIVE_SCOPE.md",
+      "stored": "项目文档/DEFENSIVE_SCOPE.md",
+      "sha256": "76facac5e8c0176361dbd4522642fedf809582e6b0f0b1b8a162033c2461d827"
+    },
+    {
+      "original": "LICENSE",
+      "stored": "项目文档/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "original": "LICENSE_CLEANUP.json",
+      "stored": "项目文档/LICENSE_CLEANUP.json",
+      "sha256": "31deeb91aea0c7dc385fd76c8eff41ec2d775d9b67da9f95976bcf1355809dfb"
+    },
+    {
+      "original": "NOTICE",
+      "stored": "项目文档/NOTICE",
+      "sha256": "65493c80b2e8080a770ac4a74fc8749914cb7c20472f19cf17dad86beb6dc5c2"
+    },
+    {
+      "original": "ORIGIN.md",
+      "stored": "项目文档/ORIGIN.md",
+      "sha256": "9dadbc482788596af3419a1a2c712995bb4cbfa9eb4e1ab74a751e76ac2fe068"
+    },
+    {
+      "original": "README.md",
+      "stored": "项目文档/README.md",
+      "sha256": "89459f10c86ba0990c822cd1ad440bde1cee2f7b90189a2296de4fd19d7c27f6"
+    },
+    {
+      "original": "VALIDATION.md",
+      "stored": "项目文档/VALIDATION.md",
+      "sha256": "a7458eeb2c3ce15ebe4852cabddf19ad59fdfa49aee3df4c4e4352bd230cc685"
+    }
+  ],
+  "platform_entries": []
+}
