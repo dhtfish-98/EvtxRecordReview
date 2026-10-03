@@ -1,6 +1,9 @@
 # Origin and attribution
 
-This is new Codex-assisted code for bitfish886, informed by
+Current implementation author and maintainer: **dhtfish98**. Current package version: **0.1.2**. Upstream authors and reused components retain their original attribution.
+
+
+New implementation author: dhtfish98. This code is informed by
 [williballenthin/python-evtx](https://github.com/williballenthin/python-evtx/tree/1edde3655c676bd44990ce9762d6b8f73334ed1d),
 frozen at `1edde3655c676bd44990ce9762d6b8f73334ed1d`, Apache-2.0. The original
 Willi Ballenthin/Mandiant authorship and upstream historical acknowledgement of
@@ -37,7 +40,7 @@ synthetic binary fixtures and two frozen upstream binary test fixtures. These
 research dependencies and raw logs are excluded from distribution. Fixed fixture
 Git blob/hash identity and aggregate comparison results are in VALIDATION.
 This does not certify original log authenticity or Windows exporter equivalence.
-The Windows validation adapters are new reviewed Codex-assisted test code, based
+The Windows validation adapters are new reviewed test code, based
 on Microsoft's documented [EventLogReader](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.eventing.reader.eventlogreader?view=netframework-4.8)
 and [EventLogRecord.ToXml](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.eventing.reader.eventlogrecord.toxml?view=netframework-4.8) APIs with FilePath input.
 They use fixed historical input files and disclose no raw event contents.

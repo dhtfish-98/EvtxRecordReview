@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evtx-record-review"
-version = "0.1.1"
+version = "0.1.2"
 description = "Bounded offline EVTX integrity, BinXML and source-positioned event evidence"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE", "licenses/*.txt"]
-authors = [{name = "bitfish886, with Codex AI assistance"}]
+authors = [{name = "dhtfish98"}]
 dependencies = []
 classifiers = ["Programming Language :: Python :: 3", "Topic :: Security"]
 

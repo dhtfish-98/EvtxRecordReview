@@ -5,3 +5,5 @@ recursive-include tests *.py
 recursive-include tools *.py *.ps1
 recursive-include evidence *.json
 recursive-include .github/workflows *.yml
+
+include SOURCE_MANIFEST.json ATTRIBUTION_UPDATE.json

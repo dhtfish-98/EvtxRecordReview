@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "project": "EvtxRecordReview",
+  "version": "0.1.2",
+  "implementation_author": "dhtfish98",
+  "self_excluded_to_avoid_recursive_hash": true,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "e2692bbd6f476772ef3662b1d75966cbdd1a126f4fa6e979478e8833f0379cce",
+      "bytes": 55
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "f17361943a5db582feaa3540c964b4ec6341cc8bfc6059288c5fe00cfc277aca",
+      "bytes": 1197
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "bb5832ba165615ffd69f59af6f9c5a14e4fee68198cbff929849cba2b3479291",
+      "bytes": 70
+    },
+    {
+      "path": "ATTRIBUTION_UPDATE.json",
+      "sha256": "5576525bc1cb51fd0f751ae68393cc94d3fd338adb7ad6fea202b37ef7e8374e",
+      "bytes": 935
+    },
+    {
+      "path": "DEFENSIVE_SCOPE.md",
+      "sha256": "76facac5e8c0176361dbd4522642fedf809582e6b0f0b1b8a162033c2461d827",
+      "bytes": 5811
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "MANIFEST.in",
+      "sha256": "da7b4fb75983288e512773d129ed568da1a45b9550a562ddf13007016e79f049",
+      "bytes": 364
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "8fac629dd9baec7819296667b17ba6beafba17d5dd276d06f4aed5f25080e929",
+      "bytes": 1476
+    },
+    {
+      "path": "ORIGIN.md",
+      "sha256": "d989d72717d9abc96d5a91cc57c3406d69a6df18e9454918aa8ad7b63a41005f",
+      "bytes": 3279
+    },
+    {
+      "path": "README.md",
+      "sha256": "6a94466f8d96b846f3bf297601d4169a2d9bf5e5d5033b5bebd240563ad7a147",
+      "bytes": 6023
+    },
+    {
+      "path": "VALIDATION.md",
+      "sha256": "ef8f67116f24a8d7fadf262fa14c3b82ca9365134716688d257f496ca4a62510",
+      "bytes": 11961
+    },
+    {
+      "path": "evidence/corpus-provenance.json",
+      "sha256": "fb4505bb9cad4b025d59e6380b1fb5db91ebe52bf469ddf33010a9dc69a4e02c",
+      "bytes": 1071
+    },
+    {
+      "path": "evidence/git-newline-control.json",
+      "sha256": "f948cea9e8b1d93240c1033a31f478a0a9ce3e0dc4d1bec64610aa3b82e8fed2",
+      "bytes": 6892
+    },
+    {
+      "path": "evidence/parser-differential.json",
+      "sha256": "f7222a70b25fb6d449db1646972a22a76df48d4b7c88a477b5b4048a8bbc0eec",
+      "bytes": 2922
+    },
+    {
+      "path": "evidence/reaudit-0.1.1.json",
+      "sha256": "94385872b0eceddcb9fe4d82e2136367e104430c4e26488b30313a71237c19bd",
+      "bytes": 1471
+    },
+    {
+      "path": "evidence/scope-gate.json",
+      "sha256": "e33f2e3f84cc6615b9b98d4072e5e0dd9341b4afaf3ae1aefc5b6cef3e31b79a",
+      "bytes": 9515
+    },
+    {
+      "path": "evidence/source-review.json",
+      "sha256": "4fc80a319b098ff9b56a6c663e62254bcd016780787e7e1445f41f9d1a91e91e",
+      "bytes": 9304
+    },
+    {
+      "path": "licenses/python-evtx-Apache-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "4c8316a24449097d1636bd1cb4e9ae5555b8d8df24b70ff38a8363c2570ff8a0",
+      "bytes": 627
+    },
+    {
+      "path": "requirements-build.txt",
+      "sha256": "206d502f592f43b6cb1a0ec971e5e4e38be6d186550c3958ee3d0fc5632c445b",
+      "bytes": 85
+    },
+    {
+      "path": "src/evtx_record_review/__init__.py",
+      "sha256": "5c58edcfc9c4b9e885e972e296f09c973d3749a937bbdd131105ffefeaee2d8c",
+      "bytes": 208
+    },
+    {
+      "path": "src/evtx_record_review/__main__.py",
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "bytes": 48
+    },
+    {
+      "path": "src/evtx_record_review/binary.py",
+      "sha256": "ebdf87e0d03debf658ea57efda88d1e1cb5c80a8118d082b057f53df7aa2a110",
+      "bytes": 2494
+    },
+    {
+      "path": "src/evtx_record_review/binxml.py",
+      "sha256": "51e5c91f5aeb4665ba56abf744a304cae480abccd24decd1dc0916ddfcc18a07",
+      "bytes": 17665
+    },
+    {
+      "path": "src/evtx_record_review/cli.py",
+      "sha256": "8c529c789ba3e42be7e39f6955f874eda1c4be13d3b437f64971c4cbbd2086de",
+      "bytes": 2143
+    },
+    {
+      "path": "src/evtx_record_review/contracts.py",
+      "sha256": "4ec1b2a808385b33a82a09bb2a3233b5f963e1304a9bf5fcd12c9f801870e79d",
+      "bytes": 5741
+    },
+    {
+      "path": "src/evtx_record_review/files.py",
+      "sha256": "b0ed6d8c7a9b8291636c7d8d4d9f92a2bd0165501df907394298ff5e9d51cde1",
+      "bytes": 2411
+    },
+    {
+      "path": "src/evtx_record_review/projection.py",
+      "sha256": "67ab1d3353f345aa29c3b401b7b0fe20b3743d41834cf22deb6e27f7692ae509",
+      "bytes": 5346
+    },
+    {
+      "path": "src/evtx_record_review/review.py",
+      "sha256": "1b1752a03742620636d816064970ac4db6a3b8770c01e7991b5afe7f1a3bf9ab",
+      "bytes": 10932
+    },
+    {
+      "path": "src/evtx_record_review/values.py",
+      "sha256": "f1bd26be7d92d4ef945bd6ed421df1da82fb56b9a4a60740b88cb0d7a4bc4f70",
+      "bytes": 5966
+    },
+    {
+      "path": "tests/fixture.py",
+      "sha256": "cf57b4ee2a2348da5a0e2335d9f8c3bc262a553393dccb9922d48518402d6051",
+      "bytes": 8161
+    },
+    {
+      "path": "tests/test_review.py",
+      "sha256": "9283e9172c5b3be65fc3cd04db8b0e73b86591ef73ad864f48c6035c35593f0c",
+      "bytes": 42079
+    },
+    {
+      "path": "tests/test_safe_read_capabilities.py",
+      "sha256": "0dda1886c90a871c5349638e60283bd922ac30725a1f7b5587f40e433571f87a",
+      "bytes": 5945
+    },
+    {
+      "path": "tests/test_windows_compare.py",
+      "sha256": "b8bd7657e3f1b144d9b0dcddca4d4c11b93ae2f9f2416e439514819fcba1cffc",
+      "bytes": 15697
+    },
+    {
+      "path": "tools/windows_compare.py",
+      "sha256": "bb332c0080aec8943610a0716841ef3719e9ab69f03462e07465fcc592c4aee8",
+      "bytes": 18555
+    },
+    {
+      "path": "tools/windows_export.ps1",
+      "sha256": "2ada2f0f093d132f259d542f0953c412cfdcd3d6cf1c2aa377f2d056c5de657d",
+      "bytes": 3599
+    }
+  ]
+}

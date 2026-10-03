@@ -2,9 +2,9 @@
   "project": "EvtxRecordReview",
   "review_status": "COMPLETE_SELECTED_NEW_SOURCE_REVIEW",
   "runtime_files": 10,
-  "runtime_lines": 1164,
-  "test_methods": 87,
-  "new_files_reviewed": 33,
+  "runtime_lines": 1168,
+  "test_methods": 92,
+  "new_files_reviewed": 35,
   "files": [
     {
       "path": ".gitattributes",
@@ -43,37 +43,37 @@
     },
     {
       "path": "MANIFEST.in",
-      "bytes": 310,
-      "lines": 7,
-      "sha256": "b42fb68dd2cfe786cd8286b75b36e5a05ee1679ce498f64ad56dfb8ea92cb45a",
+      "bytes": 364,
+      "lines": 9,
+      "sha256": "da7b4fb75983288e512773d129ed568da1a45b9550a562ddf13007016e79f049",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "NOTICE",
-      "bytes": 1527,
+      "bytes": 1476,
       "lines": 23,
-      "sha256": "41ab91c8cce5743d498cad1a1d432f28ee72cc9d84bc9cdbd97a0927c2d22f91",
+      "sha256": "8fac629dd9baec7819296667b17ba6beafba17d5dd276d06f4aed5f25080e929",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "ORIGIN.md",
-      "bytes": 3118,
-      "lines": 43,
-      "sha256": "5518ae9e95b893715164cd09091a3f49f3ac175aacb1ac2402b77d1b7b2b0a5f",
+      "bytes": 3279,
+      "lines": 46,
+      "sha256": "d989d72717d9abc96d5a91cc57c3406d69a6df18e9454918aa8ad7b63a41005f",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "README.md",
-      "bytes": 5474,
-      "lines": 81,
-      "sha256": "dfbccd411af459723f36f3e888bccd55ac2bcab13e852bf8ee3dff35ca324f0e",
+      "bytes": 6023,
+      "lines": 86,
+      "sha256": "6a94466f8d96b846f3bf297601d4169a2d9bf5e5d5033b5bebd240563ad7a147",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 10034,
-      "lines": 140,
-      "sha256": "9f7b547b38932c71d38f7b990a30756cd18c2b978b1e9e80b81915e0eb3215f6",
+      "bytes": 11961,
+      "lines": 154,
+      "sha256": "ef8f67116f24a8d7fadf262fa14c3b82ca9365134716688d257f496ca4a62510",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -99,9 +99,9 @@
     },
     {
       "path": "evidence/scope-gate.json",
-      "bytes": 9558,
+      "bytes": 9515,
       "lines": 214,
-      "sha256": "048b6c24a1354fe84150e50e2b89227dda67a948fdaf1643de9fd68110d8ad00",
+      "sha256": "e33f2e3f84cc6615b9b98d4072e5e0dd9341b4afaf3ae1aefc5b6cef3e31b79a",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -113,9 +113,9 @@
     },
     {
       "path": "pyproject.toml",
-      "bytes": 654,
+      "bytes": 627,
       "lines": 21,
-      "sha256": "114629b8fff0fc74e26efcf5dcf5c03169a5cc5a2205ee98fae2397d480c93a1",
+      "sha256": "4c8316a24449097d1636bd1cb4e9ae5555b8d8df24b70ff38a8363c2570ff8a0",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -127,9 +127,9 @@
     },
     {
       "path": "src/evtx_record_review/__init__.py",
-      "bytes": 193,
-      "lines": 7,
-      "sha256": "b661c6325c3c98ecce6274dd558973e69e52d00a19ef4bdfdaecbeb43fa2eb4a",
+      "bytes": 208,
+      "lines": 9,
+      "sha256": "5c58edcfc9c4b9e885e972e296f09c973d3749a937bbdd131105ffefeaee2d8c",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -157,21 +157,21 @@
       "path": "src/evtx_record_review/cli.py",
       "bytes": 2143,
       "lines": 47,
-      "sha256": "1bea252201ce5c4c9591d1a3066228372e79834736bbf3c6051749c40dbef3cd",
+      "sha256": "8c529c789ba3e42be7e39f6955f874eda1c4be13d3b437f64971c4cbbd2086de",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "src/evtx_record_review/contracts.py",
-      "bytes": 5742,
+      "bytes": 5741,
       "lines": 153,
-      "sha256": "f9714447e0bfcd4bbc987332978ad884f65ae4e182524a42323b10197d533b62",
+      "sha256": "4ec1b2a808385b33a82a09bb2a3233b5f963e1304a9bf5fcd12c9f801870e79d",
       "read_scope": "ENTIRE_FILE"
     },
     {
       "path": "src/evtx_record_review/files.py",
-      "bytes": 2262,
-      "lines": 49,
-      "sha256": "729d79db1cb36321d0e1324a17a8d4ddb6daad734b10e2bde2b70d5ac1e3cc99",
+      "bytes": 2411,
+      "lines": 51,
+      "sha256": "b0ed6d8c7a9b8291636c7d8d4d9f92a2bd0165501df907394298ff5e9d51cde1",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -236,6 +236,18 @@
       "lines": 22,
       "sha256": "94385872b0eceddcb9fe4d82e2136367e104430c4e26488b30313a71237c19bd",
       "read_scope": "ENTIRE_FILE"
+    },
+    {
+      "path": "tests/test_safe_read_capabilities.py",
+      "bytes": 5945,
+      "sha256": "0dda1886c90a871c5349638e60283bd922ac30725a1f7b5587f40e433571f87a",
+      "read_scope": "ENTIRE_CURRENT_FILE"
+    },
+    {
+      "path": "ATTRIBUTION_UPDATE.json",
+      "bytes": 935,
+      "sha256": "5576525bc1cb51fd0f751ae68393cc94d3fd338adb7ad6fea202b37ef7e8374e",
+      "read_scope": "ENTIRE_CURRENT_FILE"
     }
   ],
   "scope": "All new runtime/tests/docs/metadata/CI/licenses/evidence, no excluded new project code",
@@ -246,7 +258,13 @@
     "acquisition authenticity",
     "GitHub publication and exact-commit CI until parent observes them"
   ],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "reaudit_date": "2026-10-03",
-  "reaudit_review_basis": "Prior complete selected-source review retained for unchanged files; final runtime and changed source/test/CLI/docs/metadata inspected in this re-audit. Current package/installed/CI states belong to separately bound external records. Final adapter version gate and all changed controls reviewed; expected version is tied to trusted source pyproject rather than installed metadata alone."
+  "reaudit_review_basis": "Prior complete selected-source review retained for unchanged files; final runtime and changed source/test/CLI/docs/metadata inspected in this re-audit. Current package/installed/CI states belong to separately bound external records. Final adapter version gate and all changed controls reviewed; expected version is tied to trusted source pyproject rather than installed metadata alone.",
+  "current_attribution_version": "0.1.2",
+  "current_implementation_author": "dhtfish98",
+  "current_validation": "ATTRIBUTION_UPDATE.json",
+  "current_functional_revision": "Positive mandatory safe-file flags and typed, operation-complete dir_fd support guard; current full inventory in SOURCE_MANIFEST.json.",
+  "current_source_manifest": "SOURCE_MANIFEST.json",
+  "inventory_exclusions": "This review inventory and SOURCE_MANIFEST.json exclude their own/recursive manifest bytes; full current repository file identities are in SOURCE_MANIFEST.json and external batch report."
 }

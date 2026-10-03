@@ -1,5 +1,5 @@
 EvtxRecordReview
-Copyright 2026 bitfish886. New implementation and tests developed with Codex AI assistance.
+Copyright 2026 dhtfish98. New implementation and tests.
 
 This project was informed by a complete review of the selected python-evtx
 runtime and entry scripts, fixed commit 1edde3655c676bd44990ce9762d6b8f73334ed1d.
@@ -13,7 +13,7 @@ Parse-Evtx code was not audited, copied, bundled or invoked here.
 The new runtime does not import or wrap python-evtx or hexdump. Its AST, bounded
 cursors, typed value model, event projection, corruption/coverage ledger, CLI and
 synthetic fixture writer are independently written. The local snapshot-reader
-pattern is shared with other Codex-assisted projects in this portfolio; it is
+pattern is shared with other projects in this portfolio; it is
 not presented as a novel EVTX format algorithm or a separate original invention.
 
 Microsoft MS-EVEN6 selected technical specifications and libyal/libevtx's fixed

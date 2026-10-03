@@ -1,12 +1,15 @@
 # EvtxRecordReview
 
+Current implementation author and maintainer: **dhtfish98**. Current package version: **0.1.2**. Upstream authors and reused components retain their original attribution.
+
+
 Review an already acquired local EVTX snapshot without collecting from a host,
 loading event message resources, or changing the log. The tool checks file and
 chunk CRC32, record boundaries and trailers, then interprets EVTX BinXML names,
 templates and typed substitutions to report positioned event evidence.
 
 ```sh
-python -m pip install ./dist/evtx_record_review-0.1.1-py3-none-any.whl
+python -m pip install ./dist/evtx_record_review-0.1.2-py3-none-any.whl
 evtx-record-review /absolute/physical-path/snapshot.evtx
 evtx-record-review /absolute/physical-path/snapshot.evtx --mode lenient --jsonl
 evtx-record-review /absolute/physical-path/snapshot.evtx --field Event/System/Computer
@@ -79,3 +82,5 @@ Development: install `requirements-build.txt`, run `python -m build --no-isolati
 and `PYTHONPATH=src:tests python -m unittest discover -s tests -v`. Runtime has no
 third-party dependencies. See [ORIGIN.md](ORIGIN.md) for authorship and source scope
 and [VALIDATION.md](VALIDATION.md) for measured evidence and remaining limits.
+
+Safe local file input requires positive integer `O_DIRECTORY`, `O_NOFOLLOW`, `O_NONBLOCK` flags, plus directory-relative operations only where used by this reader. Missing, None, zero or boolean flags return the existing controlled unsupported/error result before opening input. File-reader validation covers macOS/Linux; native Windows safe file reading is not established.

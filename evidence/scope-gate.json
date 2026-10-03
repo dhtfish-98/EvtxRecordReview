@@ -3,7 +3,7 @@
   "status": "SOURCE_SCOPE_FULLY_REVIEWED_REWRITE_IMPLEMENTED",
   "upstream": "williballenthin/python-evtx",
   "commit": "1edde3655c676bd44990ce9762d6b8f73334ed1d",
-  "local_source": "/Users/ffffff/Documents/ClaudeCVPSignUP/research-cvp30-20261002/_sources_detection/williballenthin__python-evtx",
+  "local_source": "williballenthin/python-evtx@1edde3655c676bd44990ce9762d6b8f73334ed1d",
   "full_reviewed_files": [
     {
       "path": "Evtx/BinaryParser.py",
