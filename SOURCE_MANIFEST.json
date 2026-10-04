@@ -22,42 +22,42 @@
       "bytes": 184
     },
     {
-      "path": "ATTRIBUTION_UPDATE.json",
+      "path": "项目文档/ATTRIBUTION_UPDATE.json",
       "sha256": "7dd359a125a286804bd582491246efaeddd2a395084fa56ce9c18729f8746314",
       "bytes": 1051
     },
     {
       "path": "MANIFEST.in",
-      "sha256": "421f28c587ed76ab23883806263dba663b19b3e4f5119a839d42470e5fa7a7e9",
-      "bytes": 956
+      "sha256": "be9f7fdaaa6c0605f40627b729647fee0aa338305bfce3358eabecd579919ad3",
+      "bytes": 982
     },
     {
-      "path": "evidence/corpus-provenance.json",
+      "path": "项目文档/evidence/corpus-provenance.json",
       "sha256": "fb4505bb9cad4b025d59e6380b1fb5db91ebe52bf469ddf33010a9dc69a4e02c",
       "bytes": 1071
     },
     {
-      "path": "evidence/git-newline-control.json",
+      "path": "项目文档/evidence/git-newline-control.json",
       "sha256": "f948cea9e8b1d93240c1033a31f478a0a9ce3e0dc4d1bec64610aa3b82e8fed2",
       "bytes": 6892
     },
     {
-      "path": "evidence/parser-differential.json",
+      "path": "项目文档/evidence/parser-differential.json",
       "sha256": "f7222a70b25fb6d449db1646972a22a76df48d4b7c88a477b5b4048a8bbc0eec",
       "bytes": 2922
     },
     {
-      "path": "evidence/reaudit-0.1.1.json",
+      "path": "项目文档/evidence/reaudit-0.1.1.json",
       "sha256": "94385872b0eceddcb9fe4d82e2136367e104430c4e26488b30313a71237c19bd",
       "bytes": 1471
     },
     {
-      "path": "evidence/scope-gate.json",
+      "path": "项目文档/evidence/scope-gate.json",
       "sha256": "e33f2e3f84cc6615b9b98d4072e5e0dd9341b4afaf3ae1aefc5b6cef3e31b79a",
       "bytes": 9515
     },
     {
-      "path": "evidence/source-review.json",
+      "path": "项目文档/evidence/source-review.json",
       "sha256": "e397f83e6cee540f060292d6970be6961dd8c20eb50c98f0593fa88238052f3b",
       "bytes": 9268
     },
@@ -138,13 +138,13 @@
     },
     {
       "path": "tests/test_windows_compare.py",
-      "sha256": "b8bd7657e3f1b144d9b0dcddca4d4c11b93ae2f9f2416e439514819fcba1cffc",
-      "bytes": 15697
+      "sha256": "61f4227e27aa981265b91dea8570f47c31fb2da13dcb4890212409de8a178178",
+      "bytes": 15735
     },
     {
       "path": "tools/windows_compare.py",
-      "sha256": "bb332c0080aec8943610a0716841ef3719e9ab69f03462e07465fcc592c4aee8",
-      "bytes": 18555
+      "sha256": "bf65ac655adeb138e2f3e2908e868bbdc2496b5f3877a457c46d42a70b377b39",
+      "bytes": 18568
     },
     {
       "path": "tools/windows_export.ps1",

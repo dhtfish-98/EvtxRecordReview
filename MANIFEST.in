@@ -2,10 +2,10 @@ include 项目文档/README.md 项目文档/ORIGIN.md 项目文档/DEFENSIVE_SCO
 include .gitattributes
 recursive-include tests *.py
 recursive-include tools *.py *.ps1
-recursive-include evidence *.json
+recursive-include 项目文档/evidence *.json
 recursive-include .github/workflows *.yml
 
-include SOURCE_MANIFEST.json ATTRIBUTION_UPDATE.json
+include SOURCE_MANIFEST.json 项目文档/ATTRIBUTION_UPDATE.json
 
 include 项目文档/LICENSE_CLEANUP.json
 

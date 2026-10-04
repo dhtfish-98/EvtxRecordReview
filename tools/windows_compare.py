@@ -76,7 +76,7 @@ def installed_metadata_bytes(distribution):
 def installed_identity(project=None):
     project = Path(project) if project is not None else Path(__file__).resolve().parents[1]
     expected_version = project_version(project)
-    manifest_raw = (project / "evidence/source-review.json").read_bytes()
+    manifest_raw = (project / "项目文档/evidence/source-review.json").read_bytes()
     manifest = json.loads(manifest_raw)
     modules = [row for row in manifest["files"]
                if row["path"].startswith("src/evtx_record_review/") and row["path"].endswith(".py")]

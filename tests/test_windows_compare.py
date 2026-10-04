@@ -156,7 +156,7 @@ class NativeAdapterTests(unittest.TestCase):
             source_config = root / "pyproject.toml"
             source_config.write_text('[project]\nname = "evtx-record-review"\nversion = "'
                                      + current_version + '"\n', encoding="utf-8")
-            (root / "evidence").mkdir()
+            (root / "项目文档/evidence").mkdir(parents=True)
             (root / "dist").mkdir()
             rows = []
             for index in range(10):
@@ -169,7 +169,7 @@ class NativeAdapterTests(unittest.TestCase):
                 source.write_bytes(raw)
                 installed.write_bytes(raw)
                 rows.append({"path": "src/" + relative, "sha256": hashlib.sha256(raw).hexdigest()})
-            manifest = root / "evidence/source-review.json"
+            manifest = root / "项目文档/evidence/source-review.json"
             manifest.write_text(json.dumps({"files": rows}))
             metadata_relative = Path("actual-fixture-distribution.dist-info/METADATA")
             metadata_file = root / "installed" / metadata_relative
