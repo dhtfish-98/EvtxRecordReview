@@ -1,6 +1,6 @@
 # Origin and attribution
 
-Current implementation author and maintainer: **dhtfish98**. Current package version: **0.1.3**. Upstream authors and reused components retain their original attribution.
+Current implementation author and maintainer: **dhtfish98**. Current package version: **0.1.4**. Upstream authors and reused components retain their original attribution.
 
 
 New implementation author: dhtfish98. This code is informed by
