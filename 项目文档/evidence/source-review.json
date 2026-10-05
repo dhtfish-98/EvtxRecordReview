@@ -122,7 +122,7 @@
       "path": "src/evtx_record_review/__init__.py",
       "bytes": 208,
       "lines": 9,
-      "sha256": "ff7b89ed0b6e76e218ee74a0659ee45d03a506536b20dc4519302d81d1b8da62",
+      "sha256": "8e9bb877a78295b0484e0d75e23b539d1147724b1ff7e5a0c980b9677c39b6e8",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -150,7 +150,7 @@
       "path": "src/evtx_record_review/cli.py",
       "bytes": 2143,
       "lines": 47,
-      "sha256": "90a74ebc492cd140b4b9981bffc16fad1488fffad65874767e86ac20acb42872",
+      "sha256": "a23c9964795748627835e70b2b1a07a7c2e96c7658115f2f46c00f345a2b94af",
       "read_scope": "ENTIRE_FILE"
     },
     {
@@ -260,5 +260,6 @@
   "current_functional_revision": "Positive mandatory safe-file flags and typed, operation-complete dir_fd support guard; current full inventory in SOURCE_MANIFEST.json.",
   "current_source_manifest": "SOURCE_MANIFEST.json",
   "inventory_exclusions": "This review inventory and SOURCE_MANIFEST.json exclude their own/recursive manifest bytes; full current repository file identities are in SOURCE_MANIFEST.json and external batch report.",
-  "current_material_cleanup": "Only actual current files inventoried; source-only original design licenses/notice copies removed. Genuine distributed third-party material remains attributed."
+  "current_material_cleanup": "Only actual current files inventoried; source-only original design licenses/notice copies removed. Genuine distributed third-party material remains attributed.",
+  "package_sync_20261005": "The two runtime version metadata rows are current; other provenance rows retain their original historical review scope."
 }
